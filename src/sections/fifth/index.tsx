@@ -3,16 +3,18 @@ import React from "react";
 
 const index = () => {
   return (
-    <div id="section-four" className="flex items-center  justify-start my-20 p-16 bg-[#8459AB]">
+    <div
+      id="section-four"
+      className="flex items-center  justify-start my-20 p-16 bg-[#8459AB]"
+    >
       <div className="flex flex-col gap-10 items-start justify-start w-[45vw]">
         <h3 className="text-6xl font-bowlby font-[400] text-[#FAFAFA] ">
-          Earn from <br /> Being <br /> Crowned
+          <span className="text-nowrap">EARN FROM</span> BEING CROWNED
         </h3>
         <p className="font-sans font-[600] text-xl text-[#FAFAFA]">
           💰 2 ways to earn real money on Crowned: <br /> <br />
           1. Get friends to join with a subscription <br />
-          2. Post UGC via Crown Cam on TikTok and earn through views
-          (CPM)
+          2. Post UGC via Crown Cam on TikTok and earn through views (CPM)
         </p>
       </div>
 

@@ -29,11 +29,11 @@ const index = () => {
             Pick a Crown (like “Most Likely to Go Viral”)
           </p>
         </div> */}
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card text="Pick a Crown (like “Most Likely to Go Viral”)" imagesrc="/assets/third_section_first_icon.svg" />
+        <Card text="Send it to a friend — anonymous 👀" imagesrc="/assets/third_section_second_icon.svg" />
+        <Card text="They unlock it by crowning someone else" imagesrc="/assets/third_section_third_icon.svg" />
+        <Card text="Build streaks. Get crowned. Go viral." imagesrc="/assets/third_section_fourth_icon.svg" />
+    
       </div>
     </div>
   );

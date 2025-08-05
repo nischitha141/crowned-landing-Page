@@ -21,7 +21,7 @@ const bowlbyOne = Bowlby_One({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${urbanist.variable} ${plusJakarta.variable} ${bowlbyOne.variable} antialiased`}>
+    <html lang="en">
       <body
         className={`${urbanist.variable} ${plusJakarta.variable} ${bowlbyOne.variable} antialiased bg-[#FFFAF1]` }
       >

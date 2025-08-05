@@ -3,9 +3,9 @@ import React from "react";
 
 const index = () => {
   return (
-    <div id="section-five" className="my-20 p-10 py-24 bg-[#8459AB] text-white flex flex-col items-center justify-center gap-10 relative">
+    <div id="section-five" className="my-20 p-14 py-24 bg-[#8459AB] text-white flex flex-col items-center justify-center gap-10 relative">
       <h2 className="text-7xl font-bowlby font[400] text-[#FAFAFA] text-center z-0">
-        It’s Your Turn to Get <br /> Crowned 👑
+        IT&apos;S YOUR TURN TO GET <br /> CROWNED 👑
       </h2>
        <div className="mt-4 flex space-x-4">
                 <button className="bg-black text-white px-4 py-1 rounded-xl border-2 border-[#BDBDBD]  flex items-center justify-center gap-2">
@@ -35,21 +35,30 @@ const index = () => {
                
               </div>
       <Image
-        className="absolute top-0 right-0"
+        className="absolute top-[12%]  left-[10%]"
         src="/assets/star_1.svg"
         alt="polygon"
-        width={70}
-        height={70}
+        width={30}
+        height={30}
       />
+     
       <Image
-        className="absolute bottom-0 right-0"
+        className="absolute top-[5%] left-1/2"
         src="/assets/star_2.svg"
         alt="polygon"
-        width={50}
-        height={50}
+        width={40}
+        height={40}
       />
       <Image
-        className="absolute top-0 left-0"
+        className="absolute top-[10%] right-[15%]"
+        src="/assets/star_2.svg"
+        alt="polygon"
+        width={20}
+        height={20}
+      />
+
+      <Image
+        className="absolute bottom-[8%] left-[10%]"
         src="/assets/star_2.svg"
         alt="polygon"
         width={50}
@@ -57,11 +66,19 @@ const index = () => {
       />
 
       <Image
-        className="absolute bottom-0 left-0"
+        className="absolute bottom-[8%] right-[10%]"
         src="/assets/star_2.svg"
         alt="polygon"
-        width={50}
-        height={50}
+        width={30}
+        height={30}
+      />
+
+      <Image
+        className="absolute bottom-[8%] right-1/2"
+        src="/assets/star_2.svg"
+        alt="polygon"
+        width={20}
+        height={20}
       />
     </div>
   );

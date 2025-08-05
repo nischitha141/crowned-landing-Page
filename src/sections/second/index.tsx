@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const index = () => {
   return (
-    <div id="section-two" className="my-28 bg-[#8459AB]  grid grid-cols-2 gap-4">
+    <div id="section-two" className="my-28 mt-32  bg-[#8459AB]  grid grid-cols-2 gap-4">
       <div className="relative flex items-center justify-center">
         <Image className="absolute -z-0" src="/assets/second_section_last_polygon.svg" alt="polygon" width={400} height={400} />
         <Image className="absolute bottom-[10%] left-[10px] z-40" src="/assets/second_section_first_polygon.svg" alt="polygon" width={300} height={300} />

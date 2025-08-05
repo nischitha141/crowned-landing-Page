@@ -14,7 +14,7 @@ const index = () => {
           </div>
           <div className='flex flex-col gap-10 items-start justify-center'>
               <h3 className="text-7xl font-bowlby font-[400] text-[#424242] ">
-                  Lights. Crown.<br/> Cash. 🎥 💸
+                  LIGHTS. CROWN.<br/> CASH. 🎥 💸
               </h3>
               <p className="font-sans font-[600] text-2xl text-[#424242]">
                   🎥 Use #CrownCam on TikTok and Snapchat<br /> 💰 Get cash when your video pops off<br />
