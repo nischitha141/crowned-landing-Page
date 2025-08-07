@@ -13,7 +13,7 @@ const index = () => {
       </div>
 
       <div className="flex flex-col justify-center items-start gap-4 text-white p-8 py-16">
-        <h3 className="font-[400] text-6xl font-bowlby">WAIT,WHAT IS CROWNED?</h3>
+        <h3 className="font-[400] text-6xl font-bowlby">WAIT, WHAT IS CROWNED?</h3>
         <p className="font-[600] font-sans text-2xl">It’s a social recognition chain game. Crown your friends anonymously for being awesome<br />  — and let the love ripple out.</p>
         <Button text="Try it Out 🔥" />
       </div>

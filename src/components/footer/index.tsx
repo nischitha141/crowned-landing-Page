@@ -88,7 +88,7 @@ const index = () => {
               </Link>
             </li>
             <li>
-              <Link href={"/terms"} className="underline">
+              <Link href={"/policy"} className="underline">
                 Privacy Policy
               </Link>
             </li>

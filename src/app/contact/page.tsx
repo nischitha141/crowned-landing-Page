@@ -201,7 +201,7 @@ const Index = () => {
               You agree to our friendly{" "}
               <span>
                 {" "}
-                <Link href="/terms" className="font-bold underline">
+                <Link href="/policy" className="font-bold underline">
                   privacy policy
                 </Link>
               </span>
