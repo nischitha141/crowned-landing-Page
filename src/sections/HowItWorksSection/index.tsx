@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import Card from "@/components/section_card";
+import Card from "@/components/SectionCard";
 
 const index = () => {
   return (

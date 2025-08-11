@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import Header from "@/components/header";
-import Footer from "@/components/footer_clr";
+import Header from "@/components/Header";
+import Footer from "@/components/FooterAlternate";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -37,14 +37,14 @@ const Index = () => {
 
         <div className="w-[544px] flex flex-col items-center justify-center gap-5">
           <div className="w-full flex gap-4 items-center justify-between">
-            <div className="flex flex-col items-start gap-2">
+            <div className="flex flex-col items-start gap-2 w-full">
               <label
                 htmlFor="firstName"
                 className="text-[#424242] font-sans text-[14px]"
               >
                 First name*
               </label>
-              <div className="relative">
+              <div className="relative w-full">
                 <input
                   type="text"
                   id="firstName"
@@ -64,14 +64,14 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="flex flex-col items-start gap-2 ">
+            <div className="flex flex-col items-start gap-2 w-full">
               <label
                 htmlFor="lastName"
                 className="text-[#424242] font-sans text-[14px]"
               >
                 Last name*
               </label>
-              <div className="relative">
+              <div className="relative w-full">
                 <input
                   type="text"
                   id="lastName"

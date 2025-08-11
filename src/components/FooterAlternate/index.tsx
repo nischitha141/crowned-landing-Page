@@ -10,8 +10,9 @@ const index = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
   return (
-    <div className="my-10  flex items-center justify-between gap-5  bg-[#F0EBF5] py-14 px-5">
+    <div className="my-28  flex items-center justify-between gap-5 bg-[#F0EBF5] p-10 ">
       <div className="flex flex-col items-start justify-start">
         <div className="text-[#583A73] font-jakarta text-3xl flex items-center gap-2 relative">
           <h3 className="font-[800]">CROWNED</h3>
@@ -24,20 +25,26 @@ const index = () => {
             height={60}
           />
         </div>
-        <p className="font-sans font-extrabold text-lg">hello@crowned.com</p>
+        <p className="font-sans font-extrabold text-md">
+          Give Them Their Flowers.
+        </p>
+        <p className="font-sans font-[400] italic text-md">
+          Crown friends with real moments of love,
+          <br /> recognition & gratitude.
+        </p>
       </div>
       <div className="flex flex-col items-center justify-center">
         <div className="">
-          <ul className="font-sans font-bold text-xl flex  items-center justify-center gap-8">
+          <ul className="font-sans font-extrabold text-xl flex  items-center justify-center gap-8">
             <li>
-              <Link href={"/"} className="">
+              <Link href={"/"} className="underline">
                 Home
               </Link>
             </li>
             <li>
               <button
                 onClick={() => scrollToSection("section-two")}
-                className="cursor-pointer"
+                className="cursor-pointer underline"
               >
                 About
               </button>
@@ -45,7 +52,7 @@ const index = () => {
             <li>
               <button
                 onClick={() => scrollToSection("section-three")}
-                className="cursor-pointer"
+                className="cursor-pointer underline"
               >
                 How it Works
               </button>
@@ -53,7 +60,7 @@ const index = () => {
             <li>
               <button
                 onClick={() => scrollToSection("section-four")}
-                className="cursor-pointer"
+                className="cursor-pointer underline"
               >
                 Rewards
               </button>
@@ -61,13 +68,13 @@ const index = () => {
             <li>
               <button
                 onClick={() => scrollToSection("section-five")}
-                className="cursor-pointer"
+                className="cursor-pointer underline"
               >
                 Crown Cam
               </button>
             </li>
             <li>
-              <Link href={"/contact"} className="">
+              <Link href={"/contact"} className="underline">
                 Contact Us
               </Link>
             </li>
@@ -76,12 +83,12 @@ const index = () => {
         <div className="flex gap-10 mt-7 ">
           <ul className="font-sans font-extrabold text-lg flex  items-center justify-center gap-8">
             <li>
-              <Link href={"/terms"} className="">
+              <Link href={"/terms"} className="underline">
                 Terms of Service
               </Link>
             </li>
             <li>
-              <Link href={"/policy"} className="">
+              <Link href={"/policy"} className="underline">
                 Privacy Policy
               </Link>
             </li>
