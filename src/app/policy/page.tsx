@@ -4,7 +4,7 @@ import Footer from "@/components/FooterAlternates";
 
 const PrivacyPolicy = () => {
   return (
-    <div className='relative container'>
+    <div className='relative container '>
       <Header />
 
       <div className="p-6">
