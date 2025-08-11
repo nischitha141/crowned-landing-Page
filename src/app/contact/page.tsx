@@ -5,7 +5,7 @@ import Footer from "@/components/FooterAlternate";
 import Image from "next/image";
 import Link from "next/link";
 import { Toaster } from "react-hot-toast";
-import { contactFormSchema, ContactFormData } from "@/lib/validations";
+import { contactFormSchema } from "@/lib/validations";
 import { useContact } from "@/hooks/useContact";
 
 interface ZodError {

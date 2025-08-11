@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 export const useContact = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const submitContact = async (data: ContactFormData) => {
+  const submitContact = async (_formData: ContactFormData) => {
     setIsLoading(true);
     
     try {
@@ -15,7 +15,7 @@ export const useContact = () => {
       //   headers: {
       //     'Content-Type': 'application/json',
       //   },
-      //   body: JSON.stringify(data),
+      //   body: JSON.stringify(_formData),
       // });
       
       // if (!response.ok) {
