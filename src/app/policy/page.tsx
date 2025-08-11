@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from "@/components/Header";
-import Footer from "@/components/FooterAlternate";
+import Header from "@/components/Headers";
+import Footer from "@/components/FooterAlternates";
 
 const PrivacyPolicy = () => {
   return (
