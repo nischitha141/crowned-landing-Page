@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import Button from "@/components/Button";
 import Link from "next/link";
 
 const index = () => {
