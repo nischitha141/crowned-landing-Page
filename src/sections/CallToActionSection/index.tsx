@@ -1,5 +1,7 @@
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
+import { APP_LINKS } from "@/constants/links";
 
 const index = () => {
   return (
@@ -8,7 +10,7 @@ const index = () => {
         IT&apos;S YOUR TURN TO GET <br /> CROWNED 👑
       </h2>
        <div className="mt-4 flex space-x-4">
-                <button className="bg-black text-white px-4 py-1 rounded-xl border-2 border-[#BDBDBD]  flex items-center justify-center gap-2">
+                <Link href={APP_LINKS.APPLE_STORE} target="_blank" rel="noopener noreferrer" className="bg-black text-white px-4 py-1 rounded-xl border-2 border-[#BDBDBD] flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors cursor-pointer">
                   <Image
                     src="/assets/apple.svg"
                     alt="App Store"
@@ -19,11 +21,11 @@ const index = () => {
                     <span className="text-[12px] text-nowrap">Download on the</span>
                     <span className=" font-bold text-lg ">App Store</span>
                   </div>
-                </button>
-                <button className="bg-black text-white px-4 py-1 rounded-xl border-2 border-[#BDBDBD]  flex items-center justify-center gap-2">
+                </Link>
+                <Link href={APP_LINKS.GOOGLE_PLAY} target="_blank" rel="noopener noreferrer" className="bg-black text-white px-4 py-1 rounded-xl border-2 border-[#BDBDBD] flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors cursor-pointer">
                   <Image
                     src="/assets/playstore.svg"
-                    alt="App Store"
+                    alt="Google Play"
                     width={40}
                     height={40}
                   />
@@ -31,7 +33,7 @@ const index = () => {
                     <span className="text-[12px] text-nowrap">Get it on</span>
                     <span className=" font-bold text-lg ">Google Play</span>
                   </div>
-                </button>
+                </Link>
                
               </div>
       <Image
