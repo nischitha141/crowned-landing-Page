@@ -55,6 +55,44 @@ const Index = () => {
     }
   };
 
+  const handleNameChange = (field: string, value: string) => {
+    // Allow only alphabetical characters and spaces
+    const filteredValue = value.replace(/[^A-Za-z\s]/g, '');
+    handleInputChange(field, filteredValue);
+    
+    // Real-time validation
+    if (value !== filteredValue) {
+      setErrors(prev => ({ 
+        ...prev, 
+        [field]: `${field === 'firstName' ? 'First' : 'Last'} name must contain only alphabetical characters` 
+      }));
+    } else if (filteredValue.length > 0 && filteredValue.length < 2) {
+      setErrors(prev => ({ 
+        ...prev, 
+        [field]: `${field === 'firstName' ? 'First' : 'Last'} name must be at least 2 characters` 
+      }));
+    } else if (filteredValue.length > 50) {
+      setErrors(prev => ({ 
+        ...prev, 
+        [field]: `${field === 'firstName' ? 'First' : 'Last'} name must be less than 50 characters` 
+      }));
+    }
+  };
+
+  const handlePhoneChange = (value: string) => {
+    // Allow only digits and limit to 10
+    const filteredValue = value.replace(/[^0-9]/g, '').slice(0, 10);
+    handleInputChange('phone', filteredValue);
+    
+    // Real-time validation
+    if (filteredValue.length > 0 && filteredValue.length !== 10) {
+      setErrors(prev => ({ 
+        ...prev, 
+        phone: 'Phone number must be exactly 10 digits' 
+      }));
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -96,7 +134,7 @@ const Index = () => {
         </p>
 
         <form onSubmit={handleSubmit} className="w-[544px] flex flex-col items-center justify-center gap-5">
-          <div className="w-full flex gap-4 items-center justify-between">
+          <div className="w-full flex gap-4 items-start justify-between">
             <div className="flex flex-col items-start gap-2 w-full">
               <label
                 htmlFor="firstName"
@@ -109,7 +147,7 @@ const Index = () => {
                   type="text"
                   id="firstName"
                   value={formData.firstName}
-                  onChange={(e) => handleInputChange("firstName", e.target.value)}
+                  onChange={(e) => handleNameChange("firstName", e.target.value)}
                   className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none ${
                     errors.firstName ? "border-red-500" : "border-[#757575]"
                   }`}
@@ -126,9 +164,11 @@ const Index = () => {
                   />
                 )}
               </div>
-              {errors.firstName && (
-                <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
-              )}
+              <div className="h-6 w-full">
+                {errors.firstName && (
+                  <p className="text-red-500 text-sm">{errors.firstName}</p>
+                )}
+              </div>
             </div>
 
             <div className="flex flex-col items-start gap-2 w-full">
@@ -143,7 +183,7 @@ const Index = () => {
                   type="text"
                   id="lastName"
                   value={formData.lastName}
-                  onChange={(e) => handleInputChange("lastName", e.target.value)}
+                  onChange={(e) => handleNameChange("lastName", e.target.value)}
                   className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none ${
                     errors.lastName ? "border-red-500" : "border-[#757575]"
                   }`}
@@ -160,9 +200,11 @@ const Index = () => {
                   />
                 )}
               </div>
-              {errors.lastName && (
-                <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
-              )}
+              <div className="h-6 w-full">
+                {errors.lastName && (
+                  <p className="text-red-500 text-sm">{errors.lastName}</p>
+                )}
+              </div>
             </div>
           </div>
 
@@ -235,7 +277,7 @@ const Index = () => {
                   type="tel"
                   id="phone"
                   value={formData.phone}
-                  onChange={(e) => handleInputChange("phone", e.target.value)}
+                  onChange={(e) => handlePhoneChange(e.target.value)}
                   className={`w-full h-[44px] px-4 bg-white border-1 border-l-0 focus:outline-none ${
                     errors.phone || errors.countryCode ? "border-red-500" : "border-[#757575]"
                   }`}

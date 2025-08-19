@@ -64,7 +64,7 @@ const PrivacyPolicy = () => {
 
           <h2 className="text-3xl font-bold font-sans mt-6 mb-2">11. Contact Us</h2>
           <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
-          <p><strong>Email:</strong> getcrownedapp@gmail.com</p>
+          <p><strong>Email:</strong> <a href="mailto:getcrownedapp@gmail.com" className="hover:underline">getcrownedapp@gmail.com</a></p>
         </div>
       </div>
 
