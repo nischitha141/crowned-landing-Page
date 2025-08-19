@@ -35,7 +35,7 @@ const Index = () => {
     <div className="pb-[1px] rounded-lg bg-gradient-to-r from-white via-80% via-[#FDE6D4] to-[#FFC2E9] relative">
       <div className="flex items-center justify-between py-6 md:py-10 md:pt-12 border-transparent px-3 bg-[#FFFAF1]">
         {/* Logo */}
-        <Link href={"/"} className="cursor-pointer">
+        <Link href={"/"} className="cursor-pointer z-[500]">
           <div className="text-[#583A73] font-jakarta text-xl md:text-2xl flex items-center gap-2 relative">
             <h3 className="font-[800]">CROWNED</h3>
             <div className="w-2 h-2 md:w-2.5 md:h-2.5 bg-[#FCD310] rounded-full"></div>
