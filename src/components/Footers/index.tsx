@@ -30,41 +30,44 @@ const index = () => {
   };
 
   return (
-    <div className="my-28  flex items-center justify-between gap-5 ">
-      <div className="flex flex-col items-start justify-start">
+    <div className="my-16 md:my-28 flex flex-col md:flex-row items-center md:items-start justify-between gap-8 md:gap-5 px-4">
+      {/* Logo Section */}
+      <div className="flex flex-col items-center md:items-start justify-start text-center md:text-left">
         <Link href={"/"} className="cursor-pointer">
-          <div className="text-[#583A73] font-jakarta text-3xl flex items-center gap-2 relative">
+          <div className="text-[#583A73] font-jakarta text-2xl md:text-3xl flex items-center gap-2 relative">
             <h3 className="font-[800]">CROWNED</h3>
-            <div className="w-2.5 h-2.5 bg-[#FCD310] rounded-full"></div>
+            <div className="w-2 h-2 md:w-2.5 md:h-2.5 bg-[#FCD310] rounded-full"></div>
             <Image
-              className="absolute -top-9 left-1/2 right-1/2 transform -translate-x-1/2"
+              className="absolute -top-6 md:-top-9 left-1/2 right-1/2 transform -translate-x-1/2"
               src="/assets/crown.svg"
               alt="Crowned"
-              width={70}
-              height={60}
+              width={50}
+              height={40}
             />
           </div>
         </Link>
-        <p className="font-sans font-extrabold text-md">
+        <p className="font-sans font-extrabold text-sm md:text-md mt-2">
           Give Them Their Flowers.
         </p>
-        <p className="font-sans font-[400] italic text-md">
+        <p className="font-sans font-[400] italic text-sm md:text-md">
           Crown friends with real moments of love,
           <br /> recognition & gratitude.
         </p>
       </div>
+
+      {/* Navigation Section */}
       <div className="flex flex-col items-center justify-center">
-        <div className="">
-          <ul className="font-sans font-extrabold text-xl flex  items-center justify-center gap-8">
+        <div className="mb-6">
+          <ul className="font-sans font-extrabold text-base md:text-xl flex flex-wrap items-center justify-center gap-4 md:gap-8">
             <li>
-              <Link href={"/"} className="underline">
+              <Link href={"/"} className="underline whitespace-nowrap">
                 Home
               </Link>
             </li>
             <li>
               <button
                 onClick={() => handleNavigation("section-two")}
-                className="cursor-pointer underline"
+                className="cursor-pointer underline whitespace-nowrap"
               >
                 About
               </button>
@@ -72,7 +75,7 @@ const index = () => {
             <li>
               <button
                 onClick={() => handleNavigation("section-three")}
-                className="cursor-pointer underline"
+                className="cursor-pointer underline whitespace-nowrap"
               >
                 How it Works
               </button>
@@ -80,7 +83,7 @@ const index = () => {
             <li>
               <button
                 onClick={() => handleNavigation("section-four")}
-                className="cursor-pointer underline"
+                className="cursor-pointer underline whitespace-nowrap"
               >
                 Rewards
               </button>
@@ -88,27 +91,27 @@ const index = () => {
             <li>
               <button
                 onClick={() => handleNavigation("section-five")}
-                className="cursor-pointer underline"
+                className="cursor-pointer underline whitespace-nowrap"
               >
                 Crown Cam
               </button>
             </li>
             <li>
-              <Link href={"/contact"} className="underline">
+              <Link href={"/contact"} className="underline whitespace-nowrap">
                 Contact Us
               </Link>
             </li>
           </ul>
         </div>
-        <div className="flex gap-10 mt-7 ">
-          <ul className="font-sans font-extrabold text-lg flex  items-center justify-center gap-8">
+        <div className="flex gap-6 md:gap-10">
+          <ul className="font-sans font-extrabold text-sm md:text-lg flex items-center justify-center gap-4 md:gap-8">
             <li>
-              <Link href={"/terms"} className="underline">
+              <Link href={"/terms"} className="underline whitespace-nowrap">
                 Terms of Service
               </Link>
             </li>
             <li>
-              <Link href={"/policy"} className="underline">
+              <Link href={"/policy"} className="underline whitespace-nowrap">
                 Privacy Policy
               </Link>
             </li>
@@ -116,17 +119,18 @@ const index = () => {
         </div>
       </div>
 
-      <div className="flex items-center justify-center gap-5">
-        <div className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center">
+      {/* Social Media Section */}
+      <div className="flex items-center justify-center gap-4 md:gap-5">
+        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-800 flex items-center justify-center">
           <Image
             src="/assets/instagram.svg"
             alt="Instagram"
-            width={25}
-            height={25}
+            width={20}
+            height={20}
           />
         </div>
-        <div className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center">
-          <Image src="/assets/tiktok.svg" alt="TikTok" width={25} height={25} />
+        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-800 flex items-center justify-center">
+          <Image src="/assets/tiktok.svg" alt="TikTok" width={20} height={20} />
         </div>
       </div>
     </div>
