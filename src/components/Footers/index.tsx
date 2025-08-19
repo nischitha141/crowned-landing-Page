@@ -7,10 +7,21 @@ const index = () => {
   const handleNavigation = (sectionId: string) => {
     // Check if we're on the home page
     if (window.location.pathname === '/') {
-      // If we're on home page, scroll to section
+      // If we're on home page, scroll to section centered in viewport
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        const headerHeight = 100; // Header height
+        const viewportHeight = window.innerHeight;
+        const elementHeight = element.offsetHeight;
+        
+        // Calculate position to center the section in the visible viewport
+        const elementTop = element.offsetTop;
+        const scrollPosition = elementTop - headerHeight - (viewportHeight - headerHeight - elementHeight) / 2;
+        
+        window.scrollTo({
+          top: Math.max(0, scrollPosition), // Ensure we don't scroll above the page
+          behavior: "smooth"
+        });
       }
     } else {
       // If we're on another page, navigate to home with hash
