@@ -4,27 +4,36 @@ import Link from "next/link";
 import React from "react";
 
 const index = () => {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const handleNavigation = (sectionId: string) => {
+    // Check if we're on the home page
+    if (window.location.pathname === '/') {
+      // If we're on home page, scroll to section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // If we're on another page, navigate to home with hash
+      window.location.href = `/#${sectionId}`;
     }
   };
 
   return (
     <div className="my-28  flex items-center justify-between gap-5 ">
       <div className="flex flex-col items-start justify-start">
-        <div className="text-[#583A73] font-jakarta text-3xl flex items-center gap-2 relative">
-          <h3 className="font-[800]">CROWNED</h3>
-          <div className="w-2.5 h-2.5 bg-[#FCD310] rounded-full"></div>
-          <Image
-            className="absolute -top-9 left-1/2 right-1/2 transform -translate-x-1/2"
-            src="/assets/crown.svg"
-            alt="Crowned"
-            width={70}
-            height={60}
-          />
-        </div>
+        <Link href={"/"} className="cursor-pointer">
+          <div className="text-[#583A73] font-jakarta text-3xl flex items-center gap-2 relative">
+            <h3 className="font-[800]">CROWNED</h3>
+            <div className="w-2.5 h-2.5 bg-[#FCD310] rounded-full"></div>
+            <Image
+              className="absolute -top-9 left-1/2 right-1/2 transform -translate-x-1/2"
+              src="/assets/crown.svg"
+              alt="Crowned"
+              width={70}
+              height={60}
+            />
+          </div>
+        </Link>
         <p className="font-sans font-extrabold text-md">
           Give Them Their Flowers.
         </p>
@@ -43,7 +52,7 @@ const index = () => {
             </li>
             <li>
               <button
-                onClick={() => scrollToSection("section-two")}
+                onClick={() => handleNavigation("section-two")}
                 className="cursor-pointer underline"
               >
                 About
@@ -51,7 +60,7 @@ const index = () => {
             </li>
             <li>
               <button
-                onClick={() => scrollToSection("section-three")}
+                onClick={() => handleNavigation("section-three")}
                 className="cursor-pointer underline"
               >
                 How it Works
@@ -59,7 +68,7 @@ const index = () => {
             </li>
             <li>
               <button
-                onClick={() => scrollToSection("section-four")}
+                onClick={() => handleNavigation("section-four")}
                 className="cursor-pointer underline"
               >
                 Rewards
@@ -67,7 +76,7 @@ const index = () => {
             </li>
             <li>
               <button
-                onClick={() => scrollToSection("section-five")}
+                onClick={() => handleNavigation("section-five")}
                 className="cursor-pointer underline"
               >
                 Crown Cam

@@ -4,51 +4,58 @@ import React from "react";
 import Link from "next/link";
 
 const index = () => {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const handleNavigation = (sectionId: string) => {
+    // Check if we're on the home page
+    if (window.location.pathname === '/') {
+      // If we're on home page, scroll to section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // If we're on another page, navigate to home with hash
+      window.location.href = `/#${sectionId}`;
     }
   };
 
   return (
     <div className=" pb-[1px] rounded-lg bg-gradient-to-r from-white via-80% via-[#FDE6D4] to-[#FFC2E9]">
       <div className="flex items-center justify-between py-10 pt-12 border-transparent px-3 bg-[#FFFAF1] ">
-        <div className="text-[#583A73] font-jakarta text-2xl flex items-center gap-2 relative">
-          <Link href={"/"} className="cursor-pointer">
+        <Link href={"/"} className="cursor-pointer">
+          <div className="text-[#583A73] font-jakarta text-2xl flex items-center gap-2 relative">
             <h3 className="font-[800]">CROWNED</h3>
-          </Link>
-          <div className="w-2.5 h-2.5 bg-[#FCD310] rounded-full"></div>
+            <div className="w-2.5 h-2.5 bg-[#FCD310] rounded-full"></div>
 
-          <Image
-            className="absolute -top-9 left-1/2 right-1/2 transform -translate-x-1/2"
-            src="/assets/crown.svg"
-            alt="Crowned"
-            width={70}
-            height={60}
-          />
-        </div>
+            <Image
+              className="absolute -top-9 left-1/2 right-1/2 transform -translate-x-1/2"
+              src="/assets/crown.svg"
+              alt="Crowned"
+              width={70}
+              height={60}
+            />
+          </div>
+        </Link>
         <div className="flex items-center gap-5 font-sans text-[#212121] text-lg font-[900]">
           <button
-            onClick={() => scrollToSection("section-two")}
+            onClick={() => handleNavigation("section-two")}
             className="nav-button cursor-pointer"
           >
             About
           </button>
           <button
-            onClick={() => scrollToSection("section-three")}
+            onClick={() => handleNavigation("section-three")}
             className="nav-button cursor-pointer"
           >
             How it Works
           </button>
           <button
-            onClick={() => scrollToSection("section-four")}
+            onClick={() => handleNavigation("section-four")}
             className="nav-button cursor-pointer"
           >
             Rewards
           </button>
           <button
-            onClick={() => scrollToSection("section-five")}
+            onClick={() => handleNavigation("section-five")}
             className="nav-button cursor-pointer"
           >
             Crown Cam
