@@ -5,17 +5,20 @@ import toast from "react-hot-toast";
 export const useContact = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const submitContact = async (_formData: ContactFormData) => {
+  const submitContact = async (formData: ContactFormData) => {
     setIsLoading(true);
     
     try {
+      // Log form data for development (remove when API is implemented)
+      console.log('Contact form submitted:', formData);
+      
       // TODO: Replace with actual API call when backend is ready
       // const response = await fetch('/api/contact', {
       //   method: 'POST',
       //   headers: {
       //     'Content-Type': 'application/json',
       //   },
-      //   body: JSON.stringify(_formData),
+      //   body: JSON.stringify(formData),
       // });
       
       // if (!response.ok) {

@@ -4,12 +4,12 @@ import Footer from "@/components/FooterAlternates";
 
 const Index = () => {
   return (
-    <div className='relative container'>
+    <div className='relative container min-h-screen'>
       <Header />
 
-      <div className="p-6">
+      <div className="p-6 pb-1 md:pb-8">
         <h1 className="text-4xl font-[400] font-bowlby mb-4">Terms and Conditions</h1>
-        <div className="font-sans text-[16px] font-[400] leading-relaxed">
+        <div className="font-sans text-[16px] font-[400] leading-relaxed mb-16">
           <p>Your use of the Crowned website is governed by the following terms and conditions (“Terms of Use”), as well as the Crowned Privacy Policy and other operating rules, minimum qualifications, and cautions posted throughout the website or presented to you individually during your use of the website (collectively, the “Terms”). The Terms govern your use of the website, and Crowned reserves the right to update or replace the Terms at any time without notice. You are advised to review the Terms for any changes when you visit the website, even if you have not received a notification of changes, as you are bound by them even if you have not reviewed them. Your viewing and use of the website after such changes constitute your acceptance of the Terms and any modifications to such terms. If at any time you do not want to be bound by the Terms, you should log out, exit, and cease using the website immediately.</p>
           
           <h2 className="text-3xl font-bold font-sans mt-6 mb-2 ">Intended Use of Website</h2>
@@ -36,7 +36,9 @@ const Index = () => {
         </div>
       </div>
 
-      <Footer />
+      <div className="relative z-30">
+        <Footer />
+      </div>
     </div>
   )
 }

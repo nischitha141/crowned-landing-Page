@@ -127,18 +127,18 @@ const Index = () => {
   return (
     <div className="relative container">
       <Header />
-      <div className="flex flex-col items-center justify-center gap-5 my-10 relative">
-        <h1 className="text-6xl font-bowlby text-[#424242]">Contact Us</h1>
-        <p className="text-xl font-sans">
+      <div className="flex flex-col items-center justify-center gap-4 md:gap-5 my-6 md:my-10 relative px-4 md:px-0">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bowlby text-[#424242] text-center leading-tight">Contact Us</h1>
+        <p className="text-base md:text-xl font-sans text-center max-w-md md:max-w-none z-50">
           Reach out to our friendly team with any app questions!
         </p>
 
-        <form onSubmit={handleSubmit} className="w-[544px] flex flex-col items-center justify-center gap-5">
-          <div className="w-full flex gap-4 items-start justify-between">
+        <form onSubmit={handleSubmit} className="w-full z-50 max-w-[544px] flex flex-col items-center justify-center gap-4 md:gap-5">
+          <div className="w-full flex flex-col sm:flex-row gap-4 items-start justify-between">
             <div className="flex flex-col items-start gap-2 w-full">
               <label
                 htmlFor="firstName"
-                className="text-[#424242] font-sans text-[14px]"
+                className="text-[#424242] font-sans text-sm md:text-[14px]"
               >
                 First name*
               </label>
@@ -148,7 +148,7 @@ const Index = () => {
                   id="firstName"
                   value={formData.firstName}
                   onChange={(e) => handleNameChange("firstName", e.target.value)}
-                  className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none ${
+                  className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
                     errors.firstName ? "border-red-500" : "border-[#757575]"
                   }`}
                   placeholder="Aryi"
@@ -174,7 +174,7 @@ const Index = () => {
             <div className="flex flex-col items-start gap-2 w-full">
               <label
                 htmlFor="lastName"
-                className="text-[#424242] font-sans text-[14px]"
+                className="text-[#424242] font-sans text-sm md:text-[14px]"
               >
                 Last name*
               </label>
@@ -184,7 +184,7 @@ const Index = () => {
                   id="lastName"
                   value={formData.lastName}
                   onChange={(e) => handleNameChange("lastName", e.target.value)}
-                  className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none ${
+                  className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
                     errors.lastName ? "border-red-500" : "border-[#757575]"
                   }`}
                   placeholder="Last name"
@@ -211,7 +211,7 @@ const Index = () => {
           <div className="flex flex-col w-full">
             <label
               htmlFor="email"
-              className="text-[#424242] font-sans text-[14px]"
+              className="text-[#424242] font-sans text-sm md:text-[14px]"
             >
               Email*
             </label>
@@ -221,7 +221,7 @@ const Index = () => {
                 id="email"
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
-                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none ${
+                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
                   errors.email ? "border-red-500" : "border-[#757575]"
                 }`}
                 placeholder="you@company.com"
@@ -245,7 +245,7 @@ const Index = () => {
           <div className="flex flex-col w-full">
             <label
               htmlFor="phone"
-              className="text-[#424242] font-sans text-[14px]"
+              className="text-[#424242] font-sans text-sm md:text-[14px]"
             >
               Phone number*
             </label>
@@ -261,7 +261,7 @@ const Index = () => {
                     );
                     handleInputChange("countryCode", code);
                   }}
-                  className={`h-[44px] px-4 bg-white border-1 border-r-0 focus:outline-none w-[100px] appearance-none ${
+                  className={`h-[44px] px-2 md:px-4 bg-white border-1 border-r-0 focus:outline-none w-[80px] md:w-[100px] appearance-none text-sm md:text-base ${
                     errors.phone || errors.countryCode ? "border-red-500" : "border-[#757575]"
                   }`}
                   onFocus={() => handleFocus("phone")}
@@ -278,7 +278,7 @@ const Index = () => {
                   id="phone"
                   value={formData.phone}
                   onChange={(e) => handlePhoneChange(e.target.value)}
-                  className={`w-full h-[44px] px-4 bg-white border-1 border-l-0 focus:outline-none ${
+                  className={`w-full h-[44px] px-4 bg-white border-1 border-l-0 focus:outline-none text-sm md:text-base ${
                     errors.phone || errors.countryCode ? "border-red-500" : "border-[#757575]"
                   }`}
                   placeholder="(555) 000-0000"
@@ -304,7 +304,7 @@ const Index = () => {
           <div className="flex flex-col w-full">
             <label
               htmlFor="message"
-              className="text-[#424242] font-sans text-[14px]"
+              className="text-[#424242] font-sans text-sm md:text-[14px]"
             >
               Message*
             </label>
@@ -313,7 +313,7 @@ const Index = () => {
                 id="message"
                 value={formData.message}
                 onChange={(e) => handleInputChange("message", e.target.value)}
-                className={`w-full h-[128px] px-4 py-2 bg-white border-1 focus:outline-none ${
+                className={`w-full h-[128px] px-4 py-2 bg-white border-1 focus:outline-none text-sm md:text-base ${
                   errors.message ? "border-red-500" : "border-[#757575]"
                 }`}
                 placeholder="Leave us a message..."
@@ -333,7 +333,7 @@ const Index = () => {
               <p className="text-red-500 text-sm mt-1">{errors.message}</p>
             )}
           </div>
-          <div className="flex flex-col items-start gap-2 text-[14px] font-sans text-[#424242] w-full">
+          <div className="flex flex-col items-start gap-2 text-sm md:text-[14px] font-sans text-[#424242] w-full">
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
@@ -344,7 +344,7 @@ const Index = () => {
                   errors.privacy ? "border-red-500" : "border-[#757575]"
                 }`}
               />
-              <label htmlFor="privacy" className="text-[#212121] text-xl">
+              <label htmlFor="privacy" className="text-[#212121] text-base md:text-xl">
                 You agree to our friendly{" "}
                 <span>
                   {" "}
@@ -362,7 +362,7 @@ const Index = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full text-nowrap border-2 border-[#212121] bg-[#E1D6EA] shadow-[6px_6px_0px_#000000] py-1.5 px-3 h-[40px] font-bowlby font-[400] text-xl text-[#2C1D39] text-center transition-all duration-200 ${
+              className={`w-full text-nowrap border-2 border-[#212121] bg-[#E1D6EA] shadow-[6px_6px_0px_#000000] py-1.5 px-3 h-[40px] md:h-[44px] font-bowlby font-[400] text-lg md:text-xl text-[#2C1D39] text-center transition-all duration-200 ${
                 isLoading
                   ? "opacity-50 cursor-not-allowed"
                   : "cursor-pointer hover:shadow-[9px_9px_0px_#000000] hover:opacity-90"
@@ -374,28 +374,28 @@ const Index = () => {
         </form>
 
         <Image
-          className="absolute top-[10%] right-[10%] z-50"
+          className="absolute top-[5%] md:top-[10%] right-[5%] md:right-[10%] z-10 w-16 h-12 md:w-[125px] md:h-[100px]"
           src="/assets/crown.svg"
           alt="crown"
           width={125}
           height={100}
         />
         <Image
-          className="absolute top-[10%] left-[10%] z-50"
+          className="absolute top-[5%] md:top-[10%] left-[5%] md:left-[10%] z-10 w-16 h-12 md:w-[125px] md:h-[100px]"
           src="/assets/lock.svg"
           alt="lock"
           width={125}
           height={100}
         />
         <Image
-          className="absolute bottom-[10%] right-[10%] z-50"
+          className="absolute bottom-[30%] md:bottom-[20%] right-[5%] md:right-[10%] z-10 w-16 h-12 md:w-[125px] md:h-[100px]"
           src="/assets/cloud.svg"
           alt="cloud"
           width={125}
           height={100}
         />
         <Image
-          className="absolute bottom-[10%] left-[10%] z-50"
+          className="absolute bottom-[30%] md:bottom-[20%] left-[5%] md:left-[10%] z-10 w-16 h-12 md:w-[125px] md:h-[100px]"
           src="/assets/fifth_section_coin.svg"
           alt="lock"
           width={125}
@@ -403,6 +403,7 @@ const Index = () => {
         />
       </div>
 
+      <div className="h-10 md:h-32"></div>
       <Toaster />
       <Footer />
     </div>
