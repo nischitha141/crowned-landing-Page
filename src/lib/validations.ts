@@ -5,12 +5,14 @@ export const contactFormSchema = z.object({
     .string()
     .min(1, "First name is required")
     .min(2, "First name must be at least 2 characters")
-    .max(50, "First name must be less than 50 characters"),
+    .max(50, "First name must be less than 50 characters")
+    .regex(/^[A-Za-z\s]+$/, "First name must contain only alphabetical characters"),
   lastName: z
     .string()
     .min(1, "Last name is required")
     .min(2, "Last name must be at least 2 characters")
-    .max(50, "Last name must be less than 50 characters"),
+    .max(50, "Last name must be less than 50 characters")
+    .regex(/^[A-Za-z\s]+$/, "Last name must contain only alphabetical characters"),
   email: z
     .string()
     .min(1, "Email is required")
@@ -19,8 +21,8 @@ export const contactFormSchema = z.object({
   phone: z
     .string()
     .min(1, "Phone number is required")
-    .min(10, "Phone number must be at least 10 digits")
-    .regex(/^\d+$/, "Phone number must contain only digits"),
+    .length(10, "Phone number must be exactly 10 digits")
+    .regex(/^\d{10}$/, "Phone number must contain exactly 10 digits"),
   message: z
     .string()
     .min(1, "Message is required")
