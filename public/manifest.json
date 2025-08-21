@@ -1,0 +1,22 @@
+{
+  "name": "Crowned - Social Media Monetization",
+  "short_name": "Crowned",
+  "description": "Get paid for your social media content with Crowned",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFAF1",
+  "theme_color": "#8459AB",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["social", "entertainment", "finance"],
+  "lang": "en",
+  "scope": "/",
+  "id": "crowned-app"
+}

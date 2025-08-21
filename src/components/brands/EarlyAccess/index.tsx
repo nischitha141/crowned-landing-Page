@@ -1,0 +1,418 @@
+"use client";
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Toaster } from "react-hot-toast";
+
+interface ZodError {
+  issues: {
+    path: string[];
+    message: string;
+  }[];
+}
+
+const EarlyAccess = () => {
+  const [focusedInput, setFocusedInput] = useState<string | null>(null);
+  const [formData, setFormData] = useState({
+    brandName: "",
+    representative: "",
+    campaignTypes: [] as string[],
+    marketingEmail: "",
+    monthlyAccess: "",
+    campaignBudget: "",
+    cryptoRewards: "",
+    privacy: false,
+  });
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isLoading, setIsLoading] = useState(false);
+
+  const campaignOptions = [
+    "Sponsored Chains",
+    "School/College Viral Campaigns", 
+    "UGC / Creator Partnerships",
+    "Discount Reward Drops"
+  ];
+
+  const handleFocus = (inputId: string) => setFocusedInput(inputId);
+  const handleBlur = () => setFocusedInput(null);
+
+  const handleInputChange = (field: string, value: string | boolean | string[]) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: "" }));
+    }
+  };
+
+  const handleCampaignTypeChange = (campaignType: string) => {
+    const updatedTypes = formData.campaignTypes.includes(campaignType)
+      ? formData.campaignTypes.filter(type => type !== campaignType)
+      : [...formData.campaignTypes, campaignType];
+    
+    handleInputChange('campaignTypes', updatedTypes);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    
+    try {
+      // Add your validation and submission logic here
+      console.log('Form submitted:', formData);
+      
+      // Reset form on success
+      setFormData({
+        brandName: "",
+        representative: "",
+        campaignTypes: [],
+        marketingEmail: "",
+        monthlyAccess: "",
+        campaignBudget: "",
+        cryptoRewards: "",
+        privacy: false,
+      });
+    } catch (error) {
+      console.error('Submission error:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="relative container">
+      <div className="flex flex-col items-center justify-center gap-4 md:gap-5 my-6 md:my-10 relative px-4 md:px-0">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bowlby text-[#424242] text-center leading-tight">
+          Claim Your Spot
+        </h1>
+        <p className="text-base md:text-xl font-sans text-center max-w-md md:max-w-none z-50">
+          Be one of the first brands to launch Branded Crowns and earn from the chain.
+        </p>
+
+        <form onSubmit={handleSubmit} className="w-full z-50 max-w-[544px] flex flex-col items-center justify-center gap-4 md:gap-5">
+          
+          {/* Brand Name */}
+          <div className="flex flex-col w-full">
+            <label
+              htmlFor="brandName"
+              className="text-[#424242] font-sans text-sm md:text-[14px]"
+            >
+              What&apos;s your brand name and industry?*
+            </label>
+            <div className="relative">
+              <input
+                type="text"
+                id="brandName"
+                value={formData.brandName}
+                onChange={(e) => handleInputChange("brandName", e.target.value)}
+                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                  errors.brandName ? "border-red-500" : "border-[#757575]"
+                }`}
+                placeholder="Aryl"
+                onFocus={() => handleFocus("brandName")}
+                onBlur={handleBlur}
+              />
+              {focusedInput === "brandName" && (
+                <div
+                  className="absolute inset-0 border-3 rounded-md pointer-events-none"
+                  style={{
+                    borderImage: "linear-gradient(90deg, #7024B4, #F8A80D) 1",
+                  }}
+                />
+              )}
+            </div>
+            {errors.brandName && (
+              <p className="text-red-500 text-sm mt-1">{errors.brandName}</p>
+            )}
+          </div>
+
+          {/* Representative */}
+          <div className="flex flex-col w-full">
+            <label
+              htmlFor="representative"
+              className="text-[#424242] font-sans text-sm md:text-[14px]"
+            >
+              Who is your representative and their contact?*
+            </label>
+            <div className="relative">
+              <input
+                type="email"
+                id="representative"
+                value={formData.representative}
+                onChange={(e) => handleInputChange("representative", e.target.value)}
+                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                  errors.representative ? "border-red-500" : "border-[#757575]"
+                }`}
+                placeholder="you@company.com"
+                onFocus={() => handleFocus("representative")}
+                onBlur={handleBlur}
+              />
+              {focusedInput === "representative" && (
+                <div
+                  className="absolute inset-0 border-3 rounded-md pointer-events-none"
+                  style={{
+                    borderImage: "linear-gradient(90deg, #7024B4, #F8A80D) 1",
+                  }}
+                />
+              )}
+            </div>
+            {errors.representative && (
+              <p className="text-red-500 text-sm mt-1">{errors.representative}</p>
+            )}
+          </div>
+
+          {/* Campaign Types */}
+          <div className="flex flex-col w-full">
+            <label className="text-[#424242] font-sans text-sm md:text-[14px] mb-3">
+              What type of campaign are you interested in?*
+            </label>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {campaignOptions.map((option) => (
+                <div key={option} className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id={option}
+                    checked={formData.campaignTypes.includes(option)}
+                    onChange={() => handleCampaignTypeChange(option)}
+                    className={`h-5 w-5 border-1 focus:outline-none cursor-pointer ${
+                      errors.campaignTypes ? "border-red-500" : "border-[#757575]"
+                    }`}
+                  />
+                  <label 
+                    htmlFor={option} 
+                    className="text-[#424242] text-sm md:text-base cursor-pointer"
+                  >
+                    {option}
+                  </label>
+                </div>
+              ))}
+            </div>
+            {errors.campaignTypes && (
+              <p className="text-red-500 text-sm mt-1">{errors.campaignTypes}</p>
+            )}
+          </div>
+
+          {/* Marketing Email */}
+          <div className="flex flex-col w-full">
+            <label
+              htmlFor="marketingEmail"
+              className="text-[#424242] font-sans text-sm md:text-[14px]"
+            >
+              Marketing contact email
+            </label>
+            <div className="relative">
+              <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#757575" strokeWidth="2" fill="none"/>
+                  <polyline points="22,6 12,13 2,6" stroke="#757575" strokeWidth="2" fill="none"/>
+                </svg>
+              </div>
+              <input
+                type="email"
+                id="marketingEmail"
+                value={formData.marketingEmail}
+                onChange={(e) => handleInputChange("marketingEmail", e.target.value)}
+                className={`w-full h-[44px] pl-12 pr-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                  errors.marketingEmail ? "border-red-500" : "border-[#757575]"
+                }`}
+                placeholder="olivia@untitledui.com"
+                onFocus={() => handleFocus("marketingEmail")}
+                onBlur={handleBlur}
+              />
+              {focusedInput === "marketingEmail" && (
+                <div
+                  className="absolute inset-0 border-3 rounded-md pointer-events-none"
+                  style={{
+                    borderImage: "linear-gradient(90deg, #7024B4, #F8A80D) 1",
+                  }}
+                />
+              )}
+            </div>
+            {errors.marketingEmail && (
+              <p className="text-red-500 text-sm mt-1">{errors.marketingEmail}</p>
+            )}
+          </div>
+
+          {/* Monthly Access */}
+          <div className="flex flex-col w-full">
+            <label
+              htmlFor="monthlyAccess"
+              className="text-[#424242] font-sans text-sm md:text-[14px]"
+            >
+              How much would you pay for monthly access ($500–$10k+)?*
+            </label>
+            <div className="relative">
+              <input
+                type="text"
+                id="monthlyAccess"
+                value={formData.monthlyAccess}
+                onChange={(e) => handleInputChange("monthlyAccess", e.target.value)}
+                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                  errors.monthlyAccess ? "border-red-500" : "border-[#757575]"
+                }`}
+                placeholder="you@company.com"
+                onFocus={() => handleFocus("monthlyAccess")}
+                onBlur={handleBlur}
+              />
+              {focusedInput === "monthlyAccess" && (
+                <div
+                  className="absolute inset-0 border-3 rounded-md pointer-events-none"
+                  style={{
+                    borderImage: "linear-gradient(90deg, #7024B4, #F8A80D) 1",
+                  }}
+                />
+              )}
+            </div>
+            {errors.monthlyAccess && (
+              <p className="text-red-500 text-sm mt-1">{errors.monthlyAccess}</p>
+            )}
+          </div>
+
+          {/* Campaign Budget */}
+          <div className="flex flex-col w-full">
+            <label
+              htmlFor="campaignBudget"
+              className="text-[#424242] font-sans text-sm md:text-[14px]"
+            >
+              Estimated campaign budget for launch ($10k+)?*
+            </label>
+            <div className="relative">
+              <input
+                type="text"
+                id="campaignBudget"
+                value={formData.campaignBudget}
+                onChange={(e) => handleInputChange("campaignBudget", e.target.value)}
+                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                  errors.campaignBudget ? "border-red-500" : "border-[#757575]"
+                }`}
+                placeholder="you@company.com"
+                onFocus={() => handleFocus("campaignBudget")}
+                onBlur={handleBlur}
+              />
+              {focusedInput === "campaignBudget" && (
+                <div
+                  className="absolute inset-0 border-3 rounded-md pointer-events-none"
+                  style={{
+                    borderImage: "linear-gradient(90deg, #7024B4, #F8A80D) 1",
+                  }}
+                />
+              )}
+            </div>
+            {errors.campaignBudget && (
+              <p className="text-red-500 text-sm mt-1">{errors.campaignBudget}</p>
+            )}
+          </div>
+
+          {/* Crypto Rewards */}
+          <div className="flex flex-col w-full">
+            <label
+              htmlFor="cryptoRewards"
+              className="text-[#424242] font-sans text-sm md:text-[14px]"
+            >
+              Are you interested in cryptobased reward chains?*
+            </label>
+            <div className="relative">
+              <input
+                type="text"
+                id="cryptoRewards"
+                value={formData.cryptoRewards}
+                onChange={(e) => handleInputChange("cryptoRewards", e.target.value)}
+                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                  errors.cryptoRewards ? "border-red-500" : "border-[#757575]"
+                }`}
+                placeholder="you@company.com"
+                onFocus={() => handleFocus("cryptoRewards")}
+                onBlur={handleBlur}
+              />
+              {focusedInput === "cryptoRewards" && (
+                <div
+                  className="absolute inset-0 border-3 rounded-md pointer-events-none"
+                  style={{
+                    borderImage: "linear-gradient(90deg, #7024B4, #F8A80D) 1",
+                  }}
+                />
+              )}
+            </div>
+            {errors.cryptoRewards && (
+              <p className="text-red-500 text-sm mt-1">{errors.cryptoRewards}</p>
+            )}
+          </div>
+
+          {/* Privacy Policy */}
+          <div className="flex flex-col items-start gap-2 text-sm md:text-[14px] font-sans text-[#424242] w-full">
+            <div className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                id="privacy"
+                checked={formData.privacy}
+                onChange={(e) => handleInputChange("privacy", e.target.checked)}
+                className={`h-5 w-5 border-1 focus:outline-none cursor-pointer ${
+                  errors.privacy ? "border-red-500" : "border-[#757575]"
+                }`}
+              />
+              <label htmlFor="privacy" className="text-[#212121] text-base md:text-xl">
+                You agree to our friendly{" "}
+                <span>
+                  {" "}
+                  <Link href="/policy" className="font-bold underline">
+                    privacy policy
+                  </Link>
+                </span>
+              </label>
+            </div>
+            {errors.privacy && (
+              <p className="text-red-500 text-sm mt-1">{errors.privacy}</p>
+            )}
+          </div>
+
+          {/* Submit Button */}
+          <div className="relative flex items-center justify-center gap-5 w-full">
+            <button
+              type="submit"
+              disabled={isLoading}
+              className={`w-full text-nowrap border-2 border-[#212121] bg-[#E1D6EA] shadow-[6px_6px_0px_#000000] py-1.5 px-3 h-[40px] md:h-[44px] font-bowlby font-[400] text-lg md:text-xl text-[#2C1D39] text-center transition-all duration-200 ${
+                isLoading
+                  ? "opacity-50 cursor-not-allowed"
+                  : "cursor-pointer hover:shadow-[9px_9px_0px_#000000] hover:opacity-90"
+              }`}
+            >
+              {isLoading ? "SUBMITTING..." : "GET ME EARLY ACCESS"}
+            </button>
+          </div>
+        </form>
+
+        {/* Decorative Images */}
+        <Image
+          className="absolute top-[5%] md:top-[10%] right-[5%] md:right-[10%] z-10 w-16 h-12 md:w-[125px] md:h-[100px]"
+          src="/assets/crown.svg"
+          alt="crown"
+          width={125}
+          height={100}
+        />
+        <Image
+          className="absolute top-[5%] md:top-[10%] left-[5%] md:left-[10%] z-10 w-16 h-12 md:w-[125px] md:h-[100px]"
+          src="/assets/lock.svg"
+          alt="lock"
+          width={125}
+          height={100}
+        />
+        <Image
+          className="absolute bottom-[30%] md:bottom-[20%] right-[5%] md:right-[10%] z-10 w-16 h-12 md:w-[125px] md:h-[100px]"
+          src="/assets/cloud.svg"
+          alt="cloud"
+          width={125}
+          height={100}
+        />
+        <Image
+          className="absolute bottom-[30%] md:bottom-[20%] left-[5%] md:left-[10%] z-10 w-16 h-12 md:w-[125px] md:h-[100px]"
+          src="/assets/fifth_section_coin.svg"
+          alt="coin"
+          width={125}
+          height={100}
+        />
+      </div>
+
+      <Toaster />
+    </div>
+  );
+};
+
+export default EarlyAccess;

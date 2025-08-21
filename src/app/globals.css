@@ -10,6 +10,7 @@
   --font-sans: var(--font-urbanist);
   --font-jakarta: var(--font-plus-jakarta);
   --font-bowlby: var(--font-bowlby);
+  --font-syne: var(--font-syne);
 }
  
 html {
@@ -45,6 +46,17 @@ body {
 
 .nav-button:hover::after {
   width: 100%;
+}
+
+/* Hide scrollbar for webkit browsers */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @media (max-width: 768px) {

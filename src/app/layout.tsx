@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Urbanist, Plus_Jakarta_Sans, Bowlby_One } from "next/font/google";
+import { Urbanist, Plus_Jakarta_Sans, Bowlby_One, Syne } from "next/font/google";
 
 const urbanist = Urbanist({
    weight: "400",
@@ -19,11 +19,17 @@ const bowlbyOne = Bowlby_One({
   variable: "--font-bowlby",
 });
 
+const syne = Syne({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-syne",
+});
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body
-        className={`${urbanist.variable} ${plusJakarta.variable} ${bowlbyOne.variable} antialiased bg-[#FFFAF1]` }
+        className={`${urbanist.variable} ${plusJakarta.variable} ${bowlbyOne.variable} ${syne.variable} antialiased bg-[#FFFAF1]` }
       >
         {children}
       </body>
