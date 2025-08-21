@@ -14,23 +14,22 @@ interface ZodError {
 const EarlyAccess = () => {
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
   const [formData, setFormData] = useState({
-    brandName: "",
-    representative: "",
-    campaignTypes: [] as string[],
-    marketingEmail: "",
-    monthlyAccess: "",
-    campaignBudget: "",
-    cryptoRewards: "",
+    creatorName: "",
+    socialAccount: "",
+    contentCategory: "",
+    excitedAbout: [] as string[],
     privacy: false,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
 
-  const campaignOptions = [
-    "Sponsored Chains",
-    "School/College Viral Campaigns", 
-    "UGC / Creator Partnerships",
-    "Discount Reward Drops"
+  const excitedOptions = [
+    "Running viral Crown challenges?",
+    "Earning from Crown Cam?",
+    "Early creator verification?", 
+    "Earning from chain reactions?",
+    "Partnering with brands?",
+    "Participating in referral program?"
   ];
 
   const handleFocus = (inputId: string) => setFocusedInput(inputId);
@@ -43,12 +42,12 @@ const EarlyAccess = () => {
     }
   };
 
-  const handleCampaignTypeChange = (campaignType: string) => {
-    const updatedTypes = formData.campaignTypes.includes(campaignType)
-      ? formData.campaignTypes.filter(type => type !== campaignType)
-      : [...formData.campaignTypes, campaignType];
+  const handleExcitedAboutChange = (option: string) => {
+    const updatedOptions = formData.excitedAbout.includes(option)
+      ? formData.excitedAbout.filter(item => item !== option)
+      : [...formData.excitedAbout, option];
     
-    handleInputChange('campaignTypes', updatedTypes);
+    handleInputChange('excitedAbout', updatedOptions);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -61,13 +60,10 @@ const EarlyAccess = () => {
       
       // Reset form on success
       setFormData({
-        brandName: "",
-        representative: "",
-        campaignTypes: [],
-        marketingEmail: "",
-        monthlyAccess: "",
-        campaignBudget: "",
-        cryptoRewards: "",
+        creatorName: "",
+        socialAccount: "",
+        contentCategory: "",
+        excitedAbout: [],
         privacy: false,
       });
     } catch (error) {
@@ -81,36 +77,36 @@ const EarlyAccess = () => {
     <div className="relative container">
       <div className="flex flex-col items-center justify-center gap-4 md:gap-5 my-6 md:my-10 relative px-4 md:px-0">
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-bowlby text-[#424242] text-center leading-tight">
-          Claim Your Spot
+          Be First to Crown & Earn
         </h1>
         <p className="text-base md:text-xl font-sans text-center max-w-md md:max-w-none z-50">
-          Be one of the first brands to launch Branded Crowns and earn from the chain.
+          Be one of the first creators to drop Premium Crowns and earn from the chain.
         </p>
 
         <form onSubmit={handleSubmit} className="w-full z-50 max-w-[544px] flex flex-col items-center justify-center gap-4 md:gap-5">
           
-          {/* Brand Name */}
+          {/* Creator Name */}
           <div className="flex flex-col w-full">
             <label
-              htmlFor="brandName"
+              htmlFor="creatorName"
               className="text-[#424242] font-sans text-sm md:text-[14px]"
             >
-              What&apos;s your brand name and industry?*
+              What&apos;s your creator name or handle?*
             </label>
             <div className="relative">
               <input
                 type="text"
-                id="brandName"
-                value={formData.brandName}
-                onChange={(e) => handleInputChange("brandName", e.target.value)}
+                id="creatorName"
+                value={formData.creatorName}
+                onChange={(e) => handleInputChange("creatorName", e.target.value)}
                 className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
-                  errors.brandName ? "border-red-500" : "border-[#757575]"
+                  errors.creatorName ? "border-red-500" : "border-[#757575]"
                 }`}
                 placeholder="Aryl"
-                onFocus={() => handleFocus("brandName")}
+                onFocus={() => handleFocus("creatorName")}
                 onBlur={handleBlur}
               />
-              {focusedInput === "brandName" && (
+              {focusedInput === "creatorName" && (
                 <div
                   className="absolute inset-0 border-3 rounded-md pointer-events-none"
                   style={{
@@ -119,33 +115,33 @@ const EarlyAccess = () => {
                 />
               )}
             </div>
-            {errors.brandName && (
-              <p className="text-red-500 text-sm mt-1">{errors.brandName}</p>
+            {errors.creatorName && (
+              <p className="text-red-500 text-sm mt-1">{errors.creatorName}</p>
             )}
           </div>
 
-          {/* Representative */}
+          {/* Social Account */}
           <div className="flex flex-col w-full">
             <label
-              htmlFor="representative"
+              htmlFor="socialAccount"
               className="text-[#424242] font-sans text-sm md:text-[14px]"
             >
-              Who is your representative and their contact?*
+              Link to your main social account (TikTok, Instagram, etc.)*
             </label>
             <div className="relative">
               <input
-                type="email"
-                id="representative"
-                value={formData.representative}
-                onChange={(e) => handleInputChange("representative", e.target.value)}
+                type="text"
+                id="socialAccount"
+                value={formData.socialAccount}
+                onChange={(e) => handleInputChange("socialAccount", e.target.value)}
                 className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
-                  errors.representative ? "border-red-500" : "border-[#757575]"
+                  errors.socialAccount ? "border-red-500" : "border-[#757575]"
                 }`}
                 placeholder="you@company.com"
-                onFocus={() => handleFocus("representative")}
+                onFocus={() => handleFocus("socialAccount")}
                 onBlur={handleBlur}
               />
-              {focusedInput === "representative" && (
+              {focusedInput === "socialAccount" && (
                 <div
                   className="absolute inset-0 border-3 rounded-md pointer-events-none"
                   style={{
@@ -154,26 +150,61 @@ const EarlyAccess = () => {
                 />
               )}
             </div>
-            {errors.representative && (
-              <p className="text-red-500 text-sm mt-1">{errors.representative}</p>
+            {errors.socialAccount && (
+              <p className="text-red-500 text-sm mt-1">{errors.socialAccount}</p>
             )}
           </div>
 
-          {/* Campaign Types */}
+          {/* Content Category */}
+          <div className="flex flex-col w-full">
+            <label
+              htmlFor="contentCategory"
+              className="text-[#424242] font-sans text-sm md:text-[14px]"
+            >
+              What content category best describes you? (e.g., music, fashion, lifestyle, crypto)
+            </label>
+            <div className="relative">
+              <input
+                type="text"
+                id="contentCategory"
+                value={formData.contentCategory}
+                onChange={(e) => handleInputChange("contentCategory", e.target.value)}
+                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                  errors.contentCategory ? "border-red-500" : "border-[#757575]"
+                }`}
+                placeholder="olivia@untitledui.com"
+                onFocus={() => handleFocus("contentCategory")}
+                onBlur={handleBlur}
+              />
+              {focusedInput === "contentCategory" && (
+                <div
+                  className="absolute inset-0 border-3 rounded-md pointer-events-none"
+                  style={{
+                    borderImage: "linear-gradient(90deg, #7024B4, #F8A80D) 1",
+                  }}
+                />
+              )}
+            </div>
+            {errors.contentCategory && (
+              <p className="text-red-500 text-sm mt-1">{errors.contentCategory}</p>
+            )}
+          </div>
+
+          {/* What are you excited about */}
           <div className="flex flex-col w-full">
             <label className="text-[#424242] font-sans text-sm md:text-[14px] mb-3">
-              What type of campaign are you interested in?*
+              What are you excited about?*
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {campaignOptions.map((option) => (
+              {excitedOptions.map((option) => (
                 <div key={option} className="flex items-center gap-2">
                   <input
                     type="checkbox"
                     id={option}
-                    checked={formData.campaignTypes.includes(option)}
-                    onChange={() => handleCampaignTypeChange(option)}
+                    checked={formData.excitedAbout.includes(option)}
+                    onChange={() => handleExcitedAboutChange(option)}
                     className={`h-5 w-5 border-1 focus:outline-none cursor-pointer ${
-                      errors.campaignTypes ? "border-red-500" : "border-[#757575]"
+                      errors.excitedAbout ? "border-red-500" : "border-[#757575]"
                     }`}
                   />
                   <label 
@@ -185,154 +216,8 @@ const EarlyAccess = () => {
                 </div>
               ))}
             </div>
-            {errors.campaignTypes && (
-              <p className="text-red-500 text-sm mt-1">{errors.campaignTypes}</p>
-            )}
-          </div>
-
-          {/* Marketing Email */}
-          <div className="flex flex-col w-full">
-            <label
-              htmlFor="marketingEmail"
-              className="text-[#424242] font-sans text-sm md:text-[14px]"
-            >
-              Marketing contact email
-            </label>
-            <div className="relative">
-              <div className="absolute left-3 top-1/2 transform -translate-y-1/2">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#757575" strokeWidth="2" fill="none"/>
-                  <polyline points="22,6 12,13 2,6" stroke="#757575" strokeWidth="2" fill="none"/>
-                </svg>
-              </div>
-              <input
-                type="email"
-                id="marketingEmail"
-                value={formData.marketingEmail}
-                onChange={(e) => handleInputChange("marketingEmail", e.target.value)}
-                className={`w-full h-[44px] pl-12 pr-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
-                  errors.marketingEmail ? "border-red-500" : "border-[#757575]"
-                }`}
-                placeholder="olivia@untitledui.com"
-                onFocus={() => handleFocus("marketingEmail")}
-                onBlur={handleBlur}
-              />
-              {focusedInput === "marketingEmail" && (
-                <div
-                  className="absolute inset-0 border-3 rounded-md pointer-events-none"
-                  style={{
-                    borderImage: "linear-gradient(90deg, #7024B4, #F8A80D) 1",
-                  }}
-                />
-              )}
-            </div>
-            {errors.marketingEmail && (
-              <p className="text-red-500 text-sm mt-1">{errors.marketingEmail}</p>
-            )}
-          </div>
-
-          {/* Monthly Access */}
-          <div className="flex flex-col w-full">
-            <label
-              htmlFor="monthlyAccess"
-              className="text-[#424242] font-sans text-sm md:text-[14px]"
-            >
-              How much would you pay for monthly access ($500–$10k+)?*
-            </label>
-            <div className="relative">
-              <input
-                type="text"
-                id="monthlyAccess"
-                value={formData.monthlyAccess}
-                onChange={(e) => handleInputChange("monthlyAccess", e.target.value)}
-                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
-                  errors.monthlyAccess ? "border-red-500" : "border-[#757575]"
-                }`}
-                placeholder="you@company.com"
-                onFocus={() => handleFocus("monthlyAccess")}
-                onBlur={handleBlur}
-              />
-              {focusedInput === "monthlyAccess" && (
-                <div
-                  className="absolute inset-0 border-3 rounded-md pointer-events-none"
-                  style={{
-                    borderImage: "linear-gradient(90deg, #7024B4, #F8A80D) 1",
-                  }}
-                />
-              )}
-            </div>
-            {errors.monthlyAccess && (
-              <p className="text-red-500 text-sm mt-1">{errors.monthlyAccess}</p>
-            )}
-          </div>
-
-          {/* Campaign Budget */}
-          <div className="flex flex-col w-full">
-            <label
-              htmlFor="campaignBudget"
-              className="text-[#424242] font-sans text-sm md:text-[14px]"
-            >
-              Estimated campaign budget for launch ($10k+)?*
-            </label>
-            <div className="relative">
-              <input
-                type="text"
-                id="campaignBudget"
-                value={formData.campaignBudget}
-                onChange={(e) => handleInputChange("campaignBudget", e.target.value)}
-                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
-                  errors.campaignBudget ? "border-red-500" : "border-[#757575]"
-                }`}
-                placeholder="you@company.com"
-                onFocus={() => handleFocus("campaignBudget")}
-                onBlur={handleBlur}
-              />
-              {focusedInput === "campaignBudget" && (
-                <div
-                  className="absolute inset-0 border-3 rounded-md pointer-events-none"
-                  style={{
-                    borderImage: "linear-gradient(90deg, #7024B4, #F8A80D) 1",
-                  }}
-                />
-              )}
-            </div>
-            {errors.campaignBudget && (
-              <p className="text-red-500 text-sm mt-1">{errors.campaignBudget}</p>
-            )}
-          </div>
-
-          {/* Crypto Rewards */}
-          <div className="flex flex-col w-full">
-            <label
-              htmlFor="cryptoRewards"
-              className="text-[#424242] font-sans text-sm md:text-[14px]"
-            >
-              Are you interested in cryptobased reward chains?*
-            </label>
-            <div className="relative">
-              <input
-                type="text"
-                id="cryptoRewards"
-                value={formData.cryptoRewards}
-                onChange={(e) => handleInputChange("cryptoRewards", e.target.value)}
-                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
-                  errors.cryptoRewards ? "border-red-500" : "border-[#757575]"
-                }`}
-                placeholder="you@company.com"
-                onFocus={() => handleFocus("cryptoRewards")}
-                onBlur={handleBlur}
-              />
-              {focusedInput === "cryptoRewards" && (
-                <div
-                  className="absolute inset-0 border-3 rounded-md pointer-events-none"
-                  style={{
-                    borderImage: "linear-gradient(90deg, #7024B4, #F8A80D) 1",
-                  }}
-                />
-              )}
-            </div>
-            {errors.cryptoRewards && (
-              <p className="text-red-500 text-sm mt-1">{errors.cryptoRewards}</p>
+            {errors.excitedAbout && (
+              <p className="text-red-500 text-sm mt-1">{errors.excitedAbout}</p>
             )}
           </div>
 
