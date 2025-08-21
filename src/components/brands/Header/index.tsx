@@ -21,13 +21,15 @@ const index = () => {
       </Link>
 
       <div className="rounded-[40px] border-4 border-black flex font-bowlby text-lg text-white">
-        <button className="py-4 px-8 border-r-4 border-black bg-gradient-to-t from-[#583A73] to-[#8459AB] rounded-l-[40px]">
+        <button className="cursor-pointer py-4 px-8 border-r-4 border-black bg-gradient-to-t from-[#583A73] to-[#8459AB] rounded-l-[40px]">
           Brands
         </button>
 
-        <button className="py-4 px-8 bg-[#D9CCE5E0] rounded-r-[40px]">
-          Creators
-        </button>
+        <Link href="/creators">
+          <button className="cursor-pointer py-4 px-8 bg-[#D9CCE5E0] text-black rounded-r-[40px] hover:bg-[#C8B8D6] transition-all duration-200">
+            Creators
+          </button>
+        </Link>
       </div>
 
       <div className="p-2 border-[2px] border-[#212121] h-[40px] shadow-[6px_6px_0px_#000000] bg-[#D9CCE5E0] z-10 flex items-center justify-center gap-2 hover:shadow-[9px_9px_0px_#000000] hover:opacity-90 transition-all duration-200">
@@ -39,13 +41,13 @@ const index = () => {
         >
           <Image
             className=""
-            src="/assets/apple.svg"
+            src="/assets/black_apple.svg"
             alt="Apple"
             width={30}
             height={30}
           />
         </Link>
-        <div className="w-[2px] h-full bg-white"></div>
+        <div className="w-[2px] h-full bg-black"></div>
         <Link
           href={APP_LINKS.GOOGLE_PLAY}
           target="_blank"
@@ -53,7 +55,7 @@ const index = () => {
           className="cursor-pointer"
         >
           <Image
-            src="/assets/android.svg"
+            src="/assets/black_android.svg"
             alt="Android"
             width={30}
             height={30}

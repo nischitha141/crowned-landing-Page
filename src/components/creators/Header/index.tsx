@@ -21,11 +21,13 @@ const index = () => {
       </Link>
 
       <div className="rounded-[40px] border-4 border-black flex font-bowlby text-lg text-white">
-        <button className="py-4 px-8 border-r-4 border-black bg-gradient-to-t from-[#583A73] to-[#8459AB] rounded-l-[40px]">
-          Brands
-        </button>
+        <Link href="/brands">
+          <button className="cursor-pointer py-4 px-8 border-r-4 border-black bg-[#D9CCE5E0] text-black rounded-l-[40px] hover:bg-[#C8B8D6] transition-all duration-200">
+            Brands
+          </button>
+        </Link>
 
-        <button className="py-4 px-8 bg-[#D9CCE5E0] rounded-r-[40px]">
+        <button className="cursor-pointer py-4 px-8 bg-gradient-to-t from-[#583A73] to-[#8459AB] rounded-r-[40px]">
           Creators
         </button>
       </div>
