@@ -82,9 +82,11 @@ const Index = () => {
 
         {/* Desktop Action Buttons */}
         <div className="hidden lg:flex items-center justify-center gap-3">
+          <Link href={"/brands"} >
           <button className="text-nowrap border-2 border-[#212121] bg-[#E1D6EA] shadow-[6px_6px_0px_#000000] py-1.5 px-3 h-[40px] font-bowlby font-[400] text-sm xl:text-xl text-[#2C1D39] text-center cursor-pointer hover:shadow-[9px_9px_0px_#000000] hover:opacity-90 transition-all duration-200">
             FOR BRANDS & CREATORS 🔥
-          </button>
+            </button>
+            </Link>
           <div className="p-2 border-[2px] border-[#212121] h-[40px] shadow-[6px_6px_0px_#000000] bg-gradient-to-t from-[#583A73] to-[#8459AB] z-10 flex items-center justify-center gap-2 hover:shadow-[9px_9px_0px_#000000] hover:opacity-90 transition-all duration-200">
             <Link href={APP_LINKS.APPLE_STORE} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
               <Image
