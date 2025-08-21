@@ -164,21 +164,21 @@ const EarlyAccess = () => {
             <label className="text-[#424242] font-sans text-sm md:text-[14px] mb-3">
               What type of campaign are you interested in?*
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="flex flex-wrap flex-row items-start justify-start gap-2">
               {campaignOptions.map((option) => (
-                <div key={option} className="flex items-center gap-2">
+                <div key={option} className="flex items-center gap-2 border border-[#757575] p-1 grow">
                   <input
                     type="checkbox"
                     id={option}
                     checked={formData.campaignTypes.includes(option)}
                     onChange={() => handleCampaignTypeChange(option)}
-                    className={`h-5 w-5 border-1 focus:outline-none cursor-pointer ${
+                    className={`h-5 w-5 border-1 focus:outline-[#AE93C8] cursor-pointer ${
                       errors.campaignTypes ? "border-red-500" : "border-[#757575]"
                     }`}
                   />
                   <label 
                     htmlFor={option} 
-                    className="text-[#424242] text-sm md:text-base cursor-pointer"
+                    className="text-[#424242] text-sm md:text-base cursor-pointer text-nowrap"
                   >
                     {option}
                   </label>
