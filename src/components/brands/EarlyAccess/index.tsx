@@ -3,20 +3,18 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Toaster } from "react-hot-toast";
+import { useBrands } from "@/hooks/useBrands";
+import { brandsFormSchema, BrandsFormData } from "@/lib/validations";
+import { ZodError } from "zod";
 
-interface ZodError {
-  issues: {
-    path: string[];
-    message: string;
-  }[];
-}
 
 const EarlyAccess = () => {
+  const { submitBrands, isLoading } = useBrands();
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<BrandsFormData>({
     brandName: "",
     representative: "",
-    campaignTypes: [] as string[],
+    campaignTypes: [],
     marketingEmail: "",
     monthlyAccess: "",
     campaignBudget: "",
@@ -24,7 +22,6 @@ const EarlyAccess = () => {
     privacy: false,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isLoading, setIsLoading] = useState(false);
 
   const campaignOptions = [
     "Sponsored Chains",
@@ -53,27 +50,34 @@ const EarlyAccess = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
+    setErrors({});
     
     try {
-      // Add your validation and submission logic here
-      console.log('Form submitted:', formData);
+      const validatedData = brandsFormSchema.parse(formData);
+      const result = await submitBrands(validatedData);
       
-      // Reset form on success
-      setFormData({
-        brandName: "",
-        representative: "",
-        campaignTypes: [],
-        marketingEmail: "",
-        monthlyAccess: "",
-        campaignBudget: "",
-        cryptoRewards: "",
-        privacy: false,
-      });
+      if (result.success) {
+        // Reset form on success
+        setFormData({
+          brandName: "",
+          representative: "",
+          campaignTypes: [],
+          marketingEmail: "",
+          monthlyAccess: "",
+          campaignBudget: "",
+          cryptoRewards: "",
+          privacy: false,
+        });
+      }
     } catch (error) {
-      console.error('Submission error:', error);
-    } finally {
-      setIsLoading(false);
+      if (error instanceof ZodError) {
+        const formattedErrors: Record<string, string> = {};
+        error.issues.forEach((issue) => {
+          const field = issue.path[0] as string;
+          formattedErrors[field] = issue.message;
+        });
+        setErrors(formattedErrors);
+      }
     }
   };
 
