@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { countryPhoneData } from "@/app/contact/data/countryPhoneData";
 
 export const contactFormSchema = z.object({
   firstName: z
@@ -18,11 +19,7 @@ export const contactFormSchema = z.object({
     .min(1, "Email is required")
     .email("Please enter a valid email address"),
   countryCode: z.string().min(1, "Country code is required"),
-  phone: z
-    .string()
-    .min(1, "Phone number is required")
-    .length(10, "Phone number must be exactly 10 digits")
-    .regex(/^\d{10}$/, "Phone number must contain exactly 10 digits"),
+  phone: z.string().min(1, "Phone number is required"),
   message: z
     .string()
     .min(1, "Message is required")
@@ -31,6 +28,24 @@ export const contactFormSchema = z.object({
   privacy: z.boolean().refine((val) => val === true, {
     message: "You must agree to the privacy policy",
   }),
+}).refine((data) => {
+  const country = countryPhoneData.find(c => c.code === data.countryCode);
+  
+  if (!country) {
+    return false;
+  }
+  
+  // Check phone number length
+  if (data.phone.length < country.minLength || data.phone.length > country.maxLength) {
+    return false;
+  }
+  
+  // Check phone number format
+  const regex = new RegExp(country.regex);
+  return regex.test(data.phone);
+}, {
+  message: "Please enter a valid phone number for the selected country",
+  path: ["phone"]
 });
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;

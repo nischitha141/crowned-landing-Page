@@ -7,6 +7,8 @@ import Link from "next/link";
 import { Toaster } from "react-hot-toast";
 import { contactFormSchema } from "@/lib/validations";
 import { useContact } from "@/hooks/useContact";
+import { countryPhoneData, CountryPhoneData } from "./data/countryPhoneData";
+import { validatePhoneNumber, getPhoneNumberPlaceholder } from "./utils/phoneValidation";
 
 interface ZodError {
   issues: {
@@ -16,28 +18,19 @@ interface ZodError {
 }
 
 
-// Country code options
-const countryCodes = [
-  { code: "+1", name: "United States", flag: "🇺🇸" },
-  { code: "+91", name: "India", flag: "🇮🇳" },
-  { code: "+44", name: "United Kingdom", flag: "🇬🇧" },
-  { code: "+33", name: "France", flag: "🇫🇷" },
-  { code: "+49", name: "Germany", flag: "🇩🇪" },
-  { code: "+81", name: "Japan", flag: "🇯🇵" },
-  { code: "+86", name: "China", flag: "🇨🇳" },
-  { code: "+7", name: "Russia", flag: "🇷🇺" },
-  { code: "+55", name: "Brazil", flag: "🇧🇷" },
-  { code: "+61", name: "Australia", flag: "🇦🇺" },
-];
+// Use comprehensive country phone data
+const countryCodes = countryPhoneData;
 
 const Index = () => {
-  const [selectedCountry, setSelectedCountry] = useState(countryCodes[0]);
+  const [selectedCountry, setSelectedCountry] = useState<CountryPhoneData>(
+    countryCodes.find(country => country.country === "United States") || countryCodes[0]
+  );
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    countryCode: countryCodes[0].code,
+    countryCode: countryCodes.find(country => country.country === "United States")?.code || countryCodes[0].code,
     phone: "",
     message: "",
     privacy: false,
@@ -80,15 +73,16 @@ const Index = () => {
   };
 
   const handlePhoneChange = (value: string) => {
-    // Allow only digits and limit to 10
-    const filteredValue = value.replace(/[^0-9]/g, '').slice(0, 10);
+    // Allow only digits and limit to max length for selected country
+    const filteredValue = value.replace(/[^0-9]/g, '').slice(0, selectedCountry.maxLength);
     handleInputChange('phone', filteredValue);
     
-    // Real-time validation
-    if (filteredValue.length > 0 && filteredValue.length !== 10) {
+    // Real-time validation using utility function
+    const validation = validatePhoneNumber(filteredValue, selectedCountry.code);
+    if (!validation.isValid && filteredValue.length > 0) {
       setErrors(prev => ({ 
         ...prev, 
-        phone: 'Phone number must be exactly 10 digits' 
+        phone: validation.error || 'Invalid phone number' 
       }));
     }
   };
@@ -101,16 +95,17 @@ const Index = () => {
       const result = await submitContact(validatedData);
       
       if (result.success) {
+        const usCountry = countryCodes.find(country => country.country === "United States") || countryCodes[0];
         setFormData({
           firstName: "",
           lastName: "",
           email: "",
-          countryCode: countryCodes[0].code,
+          countryCode: usCountry.code,
           phone: "",
           message: "",
           privacy: false,
         });
-        setSelectedCountry(countryCodes[0]);
+        setSelectedCountry(usCountry);
       }
     } catch (error) {
       if (error instanceof Error && 'issues' in error) {
@@ -255,11 +250,22 @@ const Index = () => {
                   value={selectedCountry.code}
                   onChange={(e) => {
                     const code = e.target.value;
-                    setSelectedCountry(
-                      countryCodes.find((c) => c.code === code) ||
-                        countryCodes[0]
-                    );
+                    const newCountry = countryCodes.find((c) => c.code === code) || countryCodes[0];
+                    setSelectedCountry(newCountry);
                     handleInputChange("countryCode", code);
+                    // Clear phone validation errors when country changes
+                    if (errors.phone) {
+                      setErrors(prev => ({ ...prev, phone: "" }));
+                    }
+                    // Clear phone input if it doesn't match new country format
+                    if (formData.phone) {
+                      const phoneRegex = new RegExp(newCountry.regex);
+                      if (!phoneRegex.test(formData.phone) || 
+                          formData.phone.length < newCountry.minLength || 
+                          formData.phone.length > newCountry.maxLength) {
+                        handleInputChange("phone", "");
+                      }
+                    }
                   }}
                   className={`h-[44px] px-2 md:px-4 bg-white border-1 border-r-0 focus:outline-none w-[80px] md:w-[100px] appearance-none text-sm md:text-base ${
                     errors.phone || errors.countryCode ? "border-red-500" : "border-[#757575]"
@@ -267,8 +273,8 @@ const Index = () => {
                   onFocus={() => handleFocus("phone")}
                   onBlur={handleBlur}
                 >
-                  {countryCodes.map((country) => (
-                    <option key={country.code} value={country.code}>
+                  {countryCodes.map((country, index) => (
+                    <option key={`${country.code}-${index}`} value={country.code}>
                       {country.flag} {country.code}
                     </option>
                   ))}
@@ -281,7 +287,7 @@ const Index = () => {
                   className={`w-full h-[44px] px-4 bg-white border-1 border-l-0 focus:outline-none text-sm md:text-base ${
                     errors.phone || errors.countryCode ? "border-red-500" : "border-[#757575]"
                   }`}
-                  placeholder="(555) 000-0000"
+                  placeholder={getPhoneNumberPlaceholder(selectedCountry)}
                   onFocus={() => handleFocus("phone")}
                   onBlur={handleBlur}
                 />
