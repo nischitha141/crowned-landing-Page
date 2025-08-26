@@ -81,7 +81,7 @@ export const brandsFormSchema = z.object({
   cryptoRewards: z
     .string()
     .min(1, "Crypto rewards amount is required")
-    .regex(/^\d+$/, "Crypto rewards must be a number"),
+    .regex(/^\d+$/, "Please select at least one Crypto rewards type"),
   privacy: z.boolean().refine((val) => val === true, {
     message: "You must agree to the privacy policy",
   }),

@@ -7,7 +7,6 @@ import { useBrands } from "@/hooks/useBrands";
 import { brandsFormSchema, BrandsFormData } from "@/lib/validations";
 import { ZodError } from "zod";
 
-
 const EarlyAccess = () => {
   const { submitBrands, isLoading } = useBrands();
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
@@ -30,6 +29,12 @@ const EarlyAccess = () => {
     "Discount Reward Drops"
   ];
 
+  const cryptoOptions = [
+    { value: "1", label: "Yes" },
+    { value: "0", label: "No" },
+    { value: "2", label: "Not sure yet" }
+  ];
+
   const handleFocus = (inputId: string) => setFocusedInput(inputId);
   const handleBlur = () => setFocusedInput(null);
 
@@ -47,6 +52,14 @@ const EarlyAccess = () => {
     
     handleInputChange('campaignTypes', updatedTypes);
   };
+
+  const handleCryptoRewardChange = (selectedValue: string) => {
+    // If the same option is clicked again, uncheck it, otherwise set the new value
+    const newValue = formData.cryptoRewards === selectedValue ? "" : selectedValue;
+    handleInputChange('cryptoRewards', newValue);
+  };
+
+  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -103,7 +116,7 @@ const EarlyAccess = () => {
             </label>
             <div className="relative">
               <input
-                type="text"
+                type="email"
                 id="brandName"
                 value={formData.brandName}
                 onChange={(e) => handleInputChange("brandName", e.target.value)}
@@ -138,14 +151,14 @@ const EarlyAccess = () => {
             </label>
             <div className="relative">
               <input
-                type="email"
+                type="text"
                 id="representative"
                 value={formData.representative}
                 onChange={(e) => handleInputChange("representative", e.target.value)}
                 className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
                   errors.representative ? "border-red-500" : "border-[#757575]"
                 }`}
-                placeholder="you@company.com"
+                placeholder="e.g. John Doe - Head of Partnerships, john@brand.com"
                 onFocus={() => handleFocus("representative")}
                 onBlur={handleBlur}
               />
@@ -217,7 +230,7 @@ const EarlyAccess = () => {
                 className={`w-full h-[44px] pl-12 pr-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
                   errors.marketingEmail ? "border-red-500" : "border-[#757575]"
                 }`}
-                placeholder="olivia@untitledui.com"
+                placeholder="e.g. marketing@brand.com"
                 onFocus={() => handleFocus("marketingEmail")}
                 onBlur={handleBlur}
               />
@@ -252,7 +265,7 @@ const EarlyAccess = () => {
                 className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
                   errors.monthlyAccess ? "border-red-500" : "border-[#757575]"
                 }`}
-                placeholder="you@company.com"
+                placeholder="e.g. $2,500 / month"
                 onFocus={() => handleFocus("monthlyAccess")}
                 onBlur={handleBlur}
               />
@@ -287,7 +300,7 @@ const EarlyAccess = () => {
                 className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
                   errors.campaignBudget ? "border-red-500" : "border-[#757575]"
                 }`}
-                placeholder="you@company.com"
+                placeholder="e.g. $25,000"
                 onFocus={() => handleFocus("campaignBudget")}
                 onBlur={handleBlur}
               />
@@ -307,33 +320,29 @@ const EarlyAccess = () => {
 
           {/* Crypto Rewards */}
           <div className="flex flex-col w-full">
-            <label
-              htmlFor="cryptoRewards"
-              className="text-[#424242] font-sans text-sm md:text-[14px]"
-            >
+            <label className="text-[#424242] font-sans text-sm md:text-[14px] mb-3">
               Are you interested in cryptobased reward chains?*
             </label>
-            <div className="relative">
-              <input
-                type="text"
-                id="cryptoRewards"
-                value={formData.cryptoRewards}
-                onChange={(e) => handleInputChange("cryptoRewards", e.target.value)}
-                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
-                  errors.cryptoRewards ? "border-red-500" : "border-[#757575]"
-                }`}
-                placeholder="you@company.com"
-                onFocus={() => handleFocus("cryptoRewards")}
-                onBlur={handleBlur}
-              />
-              {focusedInput === "cryptoRewards" && (
-                <div
-                  className="absolute inset-0 border-3 rounded-md pointer-events-none"
-                  style={{
-                    borderImage: "linear-gradient(90deg, #7024B4, #F8A80D) 1",
-                  }}
-                />
-              )}
+            <div className="flex flex-wrap flex-row items-start justify-start gap-2">
+              {cryptoOptions.map((option) => (
+                <div key={option.value} className="flex items-center gap-2 border border-[#757575] p-1 grow">
+                  <input
+                    type="checkbox"
+                    id={`crypto-${option.value}`}
+                    checked={formData.cryptoRewards === option.value}
+                    onChange={() => handleCryptoRewardChange(option.value)}
+                    className={`h-5 w-5 border-1 focus:outline-[#AE93C8] cursor-pointer ${
+                      errors.cryptoRewards ? "border-red-500" : "border-[#757575]"
+                    }`}
+                  />
+                  <label 
+                    htmlFor={`crypto-${option.value}`} 
+                    className="text-[#424242] text-sm md:text-base cursor-pointer text-nowrap"
+                  >
+                    {option.label}
+                  </label>
+                </div>
+              ))}
             </div>
             {errors.cryptoRewards && (
               <p className="text-red-500 text-sm mt-1">{errors.cryptoRewards}</p>

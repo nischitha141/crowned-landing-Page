@@ -93,7 +93,7 @@ const EarlyAccess = () => {
           <div className="flex flex-col w-full">
             <label
               htmlFor="creatorName"
-              className="text-[#424242] font-sans text-sm md:text-[14px]"
+              className="text-[#4E525A] font-sans text-sm md:text-[14px]"
             >
               What&apos;s your creator name or handle?*
             </label>
@@ -128,7 +128,7 @@ const EarlyAccess = () => {
           <div className="flex flex-col w-full">
             <label
               htmlFor="socialAccount"
-              className="text-[#424242] font-sans text-sm md:text-[14px]"
+              className="text-[#4E525A] font-sans text-sm md:text-[14px]"
             >
               Link to your main social account (TikTok, Instagram, etc.)*
             </label>
@@ -163,7 +163,7 @@ const EarlyAccess = () => {
           <div className="flex flex-col w-full">
             <label
               htmlFor="contentCategory"
-              className="text-[#424242] font-sans text-sm md:text-[14px]"
+              className="text-[#4E525A] font-sans text-sm md:text-[14px]"
             >
               What content category best describes you? (e.g., music, fashion, lifestyle, crypto)
             </label>
@@ -196,7 +196,7 @@ const EarlyAccess = () => {
 
           {/* What are you excited about */}
           <div className="flex flex-col w-full">
-            <label className="text-[#424242] font-sans text-sm md:text-[14px] mb-3">
+            <label className="text-[#4E525A] font-sans text-sm md:text-[14px] mb-3">
               What are you excited about?*
             </label>
             <div className="flex flex-wrap flex-row items-start justify-start gap-2">
@@ -211,9 +211,9 @@ const EarlyAccess = () => {
                       errors.excitedAbout ? "border-red-500" : "border-[#757575]"
                     }`}
                   />
-                  <label 
-                    htmlFor={option} 
-                    className="text-[#424242] text-sm md:text-base cursor-pointer text-nowrap"
+                  <label
+                    htmlFor={option}
+                    className="text-[#4E525A] text-sm md:text-base cursor-pointer text-nowrap"
                   >
                     {option}
                   </label>
@@ -237,7 +237,7 @@ const EarlyAccess = () => {
                   errors.privacy ? "border-red-500" : "border-[#757575]"
                 }`}
               />
-              <label htmlFor="privacy" className="text-[#212121] text-base md:text-xl">
+              <label htmlFor="privacy" className="text-[#212121] text-base md:text-xl my-4">
                 You agree to our friendly{" "}
                 <span>
                   {" "}
