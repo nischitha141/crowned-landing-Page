@@ -26,7 +26,7 @@ const index = () => {
         </button>
 
         <Link href="/creators">
-          <button className="cursor-pointer py-4 px-8 bg-[#D9CCE5E0] text-black rounded-r-[40px] hover:bg-[#C8B8D6] transition-all duration-200">
+          <button className="cursor-pointer text-white py-4 px-8 bg-[#D9CCE5E0] rounded-r-[40px] hover:bg-[#C8B8D6] transition-all duration-200">
             Creators
           </button>
         </Link>
