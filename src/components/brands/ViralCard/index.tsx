@@ -55,30 +55,32 @@ const ViralStrategy = () => {
 
           />
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-2 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 gap-8 md:gap-12">
           {cards.map((card) => (
             <div
               key={card.id}
-              className="relative bg-purple-200 rounded-[50px] md:rounded-3xl p-4 md:p-8 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="relative bg-purple-200 rounded-[50px] md:rounded-[50px] p-4 md:p-12 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
               style={{ backgroundColor: "#D9CCE5" }}
             >
               {/* Large background number with shadow effect */}
 
               {/* Content */}
               <div className="relative z-10 flex flex-col gap-8 ">
-                      <h3 className={`${card.positon ? "text-end" : "text-start"}  text-sm md:text-xl font-extrabold text-[#212121] font-jakarta mb-2 md:mb-4 tracking-tight`}>
+                      <h3 className={`${card.positon ? "text-end" : "text-start"}  text-sm md:text-xl font-[900] text-[#212121] font-jakarta mb-2 md:mb-4`}>
                   {card.title}
                 </h3>
 
                 <div className="flex items-center justify-between gap-4 relative">
                   <div className={`relative w-full ${card.positon ? "order-2" : "order-1"}`}>
-                    <div className="absolute top-[-55px] w-full text-center text-[#583A73] font-syne text-[150px] font-bold">
+                    <div
+                      
+                      className="absolute top-[-112px] w-full text-center text-[#6d498c] font-syne text-[220px] font-[400]">
                       {card.number}
                     </div>
-                    <div className="absolute top-[70px]  w-full h-[40px] bg-white blur-2xl"></div>
+                    <div className="absolute top-[70px]  w-full h-[90px] bg-white blur-2xl"></div>
                   </div>
 
-                  <p className={`w-full font-sans text-[#212121] font-[600] text-lg ${card.positon ? "order-1" : "order-2"}`}>
+                  <p className={`w-full font-sans text-[#212121] font-[600] text-[16px] ${card.positon ? "order-1" : "order-2"}`}>
                     {card.description}
                   </p>
                 </div>

@@ -25,15 +25,15 @@ const BrandCrowns = () => {
 
   const brandCards = [
     {
-      gradient: "from-[#75c6c2] to-[#FFFFFF]",
+      gradient: "from-[#75c6c2] via-[#d3f5f3] to-[#FFFFFF]",
       text: "Crown someone who deserves a Spotify Premium gift.Crown someone who deserves a Spotify Premium gift.",
     },
     {
-      gradient: "from-[#8459AB] to-[#FFFFFF]",
+      gradient: "from-[#a478cc] via-[#dbbff5] to-[#FFFFFF]",
       text: "Crown the friend who needs a Nike day off.",
     },
     {
-      gradient: "from-[#75c6c2] to-[#FFFFFF]",
+      gradient: "from-[#75c6c2] via-[#d3f5f3] to-[#FFFFFF]",
       text: "Crown your favorite crypto enthusiast.",
     },
     {
@@ -131,9 +131,9 @@ const BrandCrowns = () => {
         {brandCards.map((card, index) => (
           <div
             key={index}
-            className={`z-10  shrink-1 p-2 bg-gradient-to-b ${card.gradient} rounded-2xl min-w-[450px]  flex items-center justify-center flex-col flex-shrink-0`}
+            className={`z-10  shrink-1 p-3.5 bg-gradient-to-b ${card.gradient} rounded-3xl min-w-[450px]  flex items-center justify-center flex-col flex-shrink-0`}
           >
-            <div className="z-50 p-3 text-[#424242] py-8 font-jakarta text-xl font-[800] bg-white rounded-2xl w-full h-full flex items-center justify-center text-start ">
+            <div className="z-50 text-[#424242] p-10 font-jakarta text-xl font-[800] bg-white rounded-2xl w-full h-full flex items-center justify-center text-center ">
               {card.text}
             </div>
           </div>
