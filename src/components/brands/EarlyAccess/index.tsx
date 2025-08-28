@@ -116,7 +116,7 @@ const EarlyAccess = () => {
             </label>
             <div className="relative">
               <input
-                type="email"
+                type="text"
                 id="brandName"
                 value={formData.brandName}
                 onChange={(e) => handleInputChange("brandName", e.target.value)}
