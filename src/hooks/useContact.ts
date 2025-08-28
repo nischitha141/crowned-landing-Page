@@ -1,6 +1,8 @@
+"use client";
 import { useState } from "react";
 import { ContactFormData } from "@/lib/validations";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 export const useContact = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -9,39 +11,57 @@ export const useContact = () => {
     setIsLoading(true);
     
     try {
-      // Log form data for development (remove when API is implemented)
-      console.log('Contact form submitted:', formData);
+      const cleanCountryCode = formData.countryCode.split(' ')[0]; 
+      const payload = {
+        email: formData.email,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        phone: `${cleanCountryCode} ${formData.phone}`,
+        message: formData.message
+      };
       
-      // TODO: Replace with actual API call when backend is ready
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(formData),
-      // });
+      console.log('Contact form payload:', payload);
       
-      // if (!response.ok) {
-      //   throw new Error('Failed to submit contact form');
-      // }
+      const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+      if (!apiBaseUrl) {
+        throw new Error('API base URL is not configured');
+      }
       
-      // const result = await response.json();
-      
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await axios.post(`${apiBaseUrl}/api/contact-us/contactUs`, payload, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       
       toast.success("Thanks for reaching out! We'll get back to you soon.", {
         duration: 4000,
         position: 'top-center',
       });
       
-      return { success: true };
+      return { success: true, data: response.data };
     } catch (error) {
-      toast.error("Something went wrong. Please try again later.", {
+      console.error('Contact form submission error:', error);
+      
+      let errorMessage = "Something went wrong. Please try again later.";
+      
+      if (axios.isAxiosError(error)) {
+        if (error.response?.data?.message) {
+          errorMessage = error.response.data.message;
+        } else if (error.response?.status) {
+          errorMessage = `HTTP error! status: ${error.response.status}`;
+        } else if (error.message) {
+          errorMessage = error.message;
+        }
+      } else if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      
+      toast.error(errorMessage, {
         duration: 4000,
         position: 'top-center',
       });
-      return { success: false, error };
+      
+      return { success: false, error: errorMessage };
     } finally {
       setIsLoading(false);
     }
