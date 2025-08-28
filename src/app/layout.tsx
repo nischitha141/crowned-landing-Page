@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Urbanist, Plus_Jakarta_Sans, Bowlby_One, Syne } from "next/font/google";
+import type { Metadata } from "next";
 
 const urbanist = Urbanist({
    weight: "400",
@@ -24,6 +25,14 @@ const syne = Syne({
   subsets: ["latin"],
   variable: "--font-syne",
 });
+
+export const metadata: Metadata = {
+  icons: {
+    icon: "/assets/crown.svg",
+    shortcut: "/assets/crown.svg",
+    apple: "/assets/crown.svg",
+  },
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
