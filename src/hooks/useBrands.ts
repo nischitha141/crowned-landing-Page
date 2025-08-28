@@ -35,7 +35,8 @@ export const useBrands = () => {
         },
       });
       
-      toast.success("Thanks for your interest! We'll be in touch soon about early access.", {
+      const successMessage = response.data?.message || "Thanks for your interest! We'll be in touch soon about early access.";
+      toast.success(successMessage, {
         duration: 4000,
         position: 'top-center',
       });
@@ -49,10 +50,10 @@ export const useBrands = () => {
       if (axios.isAxiosError(error)) {
         if (error.response?.data?.message) {
           errorMessage = error.response.data.message;
-        } else if (error.response?.status) {
-          errorMessage = `HTTP error! status: ${error.response.status}`;
         } else if (error.message) {
           errorMessage = error.message;
+        } else if (error.response?.status) {
+          errorMessage = `HTTP error! status: ${error.response.status}`;
         }
       } else if (error instanceof Error) {
         errorMessage = error.message;

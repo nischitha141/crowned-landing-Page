@@ -32,7 +32,8 @@ export const useCreators = () => {
         },
       });
       
-      toast.success("Thanks for joining! We'll notify you when early access is available.", {
+      const successMessage = response.data?.message || "Thanks for joining! We'll notify you when early access is available.";
+      toast.success(successMessage, {
         duration: 4000,
         position: 'top-center',
       });
@@ -46,10 +47,10 @@ export const useCreators = () => {
       if (axios.isAxiosError(error)) {
         if (error.response?.data?.message) {
           errorMessage = error.response.data.message;
-        } else if (error.response?.status) {
-          errorMessage = `HTTP error! status: ${error.response.status}`;
         } else if (error.message) {
           errorMessage = error.message;
+        } else if (error.response?.status) {
+          errorMessage = `HTTP error! status: ${error.response.status}`;
         }
       } else if (error instanceof Error) {
         errorMessage = error.message;

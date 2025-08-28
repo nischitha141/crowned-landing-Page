@@ -33,7 +33,8 @@ export const useContact = () => {
         },
       });
       
-      toast.success("Thanks for reaching out! We'll get back to you soon.", {
+      const successMessage = response.data?.message || "Thanks for reaching out! We'll get back to you soon.";
+      toast.success(successMessage, {
         duration: 4000,
         position: 'top-center',
       });
@@ -47,10 +48,10 @@ export const useContact = () => {
       if (axios.isAxiosError(error)) {
         if (error.response?.data?.message) {
           errorMessage = error.response.data.message;
-        } else if (error.response?.status) {
-          errorMessage = `HTTP error! status: ${error.response.status}`;
         } else if (error.message) {
           errorMessage = error.message;
+        } else if (error.response?.status) {
+          errorMessage = `HTTP error! status: ${error.response.status}`;
         }
       } else if (error instanceof Error) {
         errorMessage = error.message;
