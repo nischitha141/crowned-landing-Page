@@ -36,7 +36,7 @@ const ViralStrategy = () => {
       title: "PARTNER TO SCALE ORGANICALLY",
       description:
         "Collaborate with micro-creators to unlock remix campaigns and native influence.",
-      numberPosition: { top: "-125px", right: "-30px" },
+      numberPosition: { top: "-125px" },
       positon: true,
     },
   ];
@@ -85,7 +85,8 @@ const ViralStrategy = () => {
                     }`}
                   >
                     <div
-                      className={`absolute top-[${card.numberPosition.top}]   w-full text-center text-[#6d498c] font-syne text-[220px] font-[400]`}
+                      className="absolute w-full text-center text-[#6d498c] font-syne text-[220px] font-[400]"
+                      style={card.numberPosition}
                     >
                       {card.number}
                     </div>
