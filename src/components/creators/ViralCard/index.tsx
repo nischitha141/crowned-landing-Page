@@ -9,7 +9,7 @@ const ViralStrategy = () => {
       title: "CHAIN REACTIONS OF HYPE",
       description:
         "Fans don’t just watch — they remix, repost, and chain your content. Every share builds hype.",
-          numberPosition: { bottom: "-30px", left: "40px" },
+          numberPosition: { top: "-130px" },
       positon:false,
     },
       {
@@ -18,7 +18,7 @@ const ViralStrategy = () => {
           title: "EARN AS YOU GROW",
           description:
               "Get paid when fans repost, extend your chain, or catch you in action on Crown Cam.",
-          numberPosition: { bottom: "-40px", right: "-20px" },
+          numberPosition: { top: "-115px" },
           positon:false,
     },
     {
@@ -27,7 +27,7 @@ const ViralStrategy = () => {
       title: "RISE FAST, EARN CRED",
       description:
         "Level up with XP, unlock upgrades, and get early access to verification and pro analytics.",
-        numberPosition: { bottom: "-30px", right: "20px" },
+        numberPosition: { top: "-130px" },
       positon:true,
     },
     {
@@ -36,24 +36,24 @@ const ViralStrategy = () => {
       title: "COLLAB WITH BRANDS THAT GET IT",
       description:
         "Run trend-first challenges and monetize collabs with bold brands.",
-        numberPosition: { bottom: "-20px", right: "-30px" },
+       numberPosition: { top: "-120px", right: "-30px" },
        positon:true,
     },
   ];
 
   return (
     <div className=" mb-20 relative">
-      <h3 className="text-5xl font-bowlby text-[#424242] text-center my-5 mb-20">
-        Benefits
+      <h3 className="relative flex items-center justify-center text-5xl font-bowlby text-[#424242] text-center my-5 mb-20">
+        <div className="relative px-4 ">Benefits  <Image
+                      src="/assets/crown.svg"
+                      height={70}
+                      width={70}
+                      alt="crown"
+                      className="absolute -top-7 -left-2 "
+        
+                  /> </div>
           </h3>
-          <Image
-              src="/assets/crown.svg"
-              height={70}
-              width={70}
-              alt="crown"
-              className="absolute top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-
-          />
+          
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-2 gap-4 md:gap-6">
           {cards.map((card) => (
@@ -66,19 +66,19 @@ const ViralStrategy = () => {
 
               {/* Content */}
               <div className="relative z-10 flex flex-col gap-8 ">
-                      <h3 className={`${card.positon ? "text-end" : "text-start"}  text-sm md:text-xl font-extrabold text-[#212121] font-jakarta mb-2 md:mb-4 tracking-tight`}>
+                      <h3 className={`${card.positon ? "text-end" : "text-start"}  text-sm md:text-xl font-sans font-[900] text-black  mb-2 md:mb-4`}>
                   {card.title}
                 </h3>
 
                 <div className="flex items-center justify-between gap-4 relative">
                   <div className={`relative w-full ${card.positon ? "order-2" : "order-1"}`}>
-                    <div className="absolute top-[-55px] w-full text-center text-[#AA7105] font-syne text-[150px] font-bold">
+                    <div className={`absolute top-[${card.numberPosition.top}]   w-full text-center text-[#AA7105] font-syne text-[220px] font-[400]`}>
                       {card.number}
                     </div>
-                    <div className="absolute top-[70px]  w-full h-[40px] bg-white blur-2xl"></div>
+                    <div className="absolute top-[70px]  w-full h-[90px] bg-white blur-2xl"></div>
                   </div>
 
-                  <p className={`w-full font-sans text-[#212121] font-[600] text-lg ${card.positon ? "order-1" : "order-2"}`}>
+                  <p className={`w-full font-sans text-[#484848] font-[600] text-lg ${card.positon ? "order-1" : "order-2"}`}>
                     {card.description}
                   </p>
                 </div>
