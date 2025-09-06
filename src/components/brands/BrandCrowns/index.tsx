@@ -1,28 +1,9 @@
 "use client";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React from "react";
+import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 
 const BrandCrowns = () => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: -470,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: 470,
-        behavior: "smooth",
-      });
-    }
-  };
-
   const brandCards = [
     {
       gradient: "from-[#75c6c2] via-[#d3f5f3] to-[#FFFFFF]",
@@ -57,6 +38,8 @@ const BrandCrowns = () => {
       text: "Crown the fashionista with a style upgrade.",
     },
   ];
+
+  const { scrollContainerRef, scrollLeft, scrollRight, handleMouseEnter, handleMouseLeave } = useInfiniteScroll(brandCards.length);
 
   return (
     <div className="mx-20 my-20">
@@ -103,10 +86,22 @@ const BrandCrowns = () => {
           scrollbarWidth: "none",
           msOverflowStyle: "none",
         }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         {brandCards.map((card, index) => (
           <div
-            key={index}
+            key={`original-${index}`}
+            className={`z-10  shrink-1 p-3.5  bg-gradient-to-b ${card.gradient} rounded-3xl min-w-[450px]  flex items-center justify-center flex-col flex-shrink-0`}
+          >
+            <div className="z-50 text-[#424242] p-10 font-jakarta text-xl font-[800] bg-white rounded-2xl w-full h-full flex items-center justify-center text-center ">
+              {card.text}
+            </div>
+          </div>
+        ))}
+        {brandCards.map((card, index) => (
+          <div
+            key={`duplicate-${index}`}
             className={`z-10  shrink-1 p-3.5  bg-gradient-to-b ${card.gradient} rounded-3xl min-w-[450px]  flex items-center justify-center flex-col flex-shrink-0`}
           >
             <div className="z-50 text-[#424242] p-10 font-jakarta text-xl font-[800] bg-white rounded-2xl w-full h-full flex items-center justify-center text-center ">
