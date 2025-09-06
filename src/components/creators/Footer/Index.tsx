@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { SOCIAL_LINKS } from "@/constants/links";
 
 const Footer = () => {
   const handleNavigation = (sectionId: string) => {
@@ -155,17 +156,21 @@ const Footer = () => {
 
       {/* Social Media Section */}
       <div className="flex items-center justify-center gap-4 md:gap-5">
-        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-800 flex items-center justify-center">
-          <Image
-            src="/assets/instagram.svg"
-            alt="Instagram"
-            width={20}
-            height={20}
-          />
-        </div>
-        <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-800 flex items-center justify-center">
-          <Image src="/assets/tiktok.svg" alt="TikTok" width={20} height={20} />
-        </div>
+        <Link href={SOCIAL_LINKS.INSTAGRAM} target="_blank" rel="noopener noreferrer">
+          <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-800 flex items-center justify-center">
+            <Image
+              src="/assets/instagram.svg"
+              alt="Instagram"
+              width={20}
+              height={20}
+            />
+          </div>
+        </Link>
+        <Link href={SOCIAL_LINKS.TIKTOK} target="_blank" rel="noopener noreferrer">
+          <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-800 flex items-center justify-center">
+            <Image src="/assets/tiktok.svg" alt="TikTok" width={20} height={20} />
+          </div>
+        </Link>
       </div>
     </div>
   );
