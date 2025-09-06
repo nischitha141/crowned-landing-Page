@@ -59,10 +59,8 @@ export const brandsFormSchema = z.object({
     .max(100, "Brand name must be less than 100 characters"),
   representative: z
     .string()
-    .min(1, "Representative name is required")
-    .min(2, "Representative name must be at least 2 characters")
-    .max(50, "Representative name must be less than 50 characters")
-    .regex(/^[A-Za-z\s]+$/, "Representative name must contain only alphabetical characters"),
+    .min(1, "Representative information is required")
+    .max(100, "Representative information must be less than 100 characters"),
   campaignTypes: z
     .array(z.string())
     .min(1, "Please select at least one campaign type"),

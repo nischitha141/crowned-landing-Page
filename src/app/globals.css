@@ -65,4 +65,30 @@ body {
   }
 }
 
+/* Global input styling */
+input[type="text"]:not(:placeholder-shown),
+input[type="email"]:not(:placeholder-shown),
+input[type="password"]:not(:placeholder-shown),
+input[type="number"]:not(:placeholder-shown),
+input[type="tel"]:not(:placeholder-shown),
+input[type="url"]:not(:placeholder-shown),
+textarea:not(:placeholder-shown) {
+  background-color: #ffffff !important;
+}
+
+/* Disable browser autocomplete styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: inherit !important;
+  background-color: white !important;
+}
+
+/* Override autofill background when input has value */
+input:-webkit-autofill:not(:placeholder-shown) {
+  -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+}
+
 
