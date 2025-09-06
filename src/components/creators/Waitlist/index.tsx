@@ -1,9 +1,30 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { APP_LINKS } from "@/constants/links";
 
 const index = () => {
+  const handleNavigation = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerHeight = 100;
+      const viewportHeight = window.innerHeight;
+      const elementHeight = element.offsetHeight;
+
+      const elementTop = element.offsetTop;
+      const scrollPosition =
+        elementTop -
+        headerHeight -
+        (viewportHeight - headerHeight - elementHeight) / 2;
+
+      window.scrollTo({
+        top: Math.max(0, scrollPosition),
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div
       id="section-five"
@@ -13,7 +34,9 @@ const index = () => {
         Be the first to drop Crowns that spark culture.
       </h2>
       <div className="mt-2 md:mt-4 flex flex-col sm:flex-row gap-4 sm:gap-4">
-        <button className="text-nowrap border-4 border-[#212121] bg-[#E1D6EA] shadow-[6px_6px_0px_#000000] py-1.5 px-3 h-[50px] font-bowlby font-[400] text-sm xl:text-xl text-[#2C1D39] text-center cursor-pointer hover:shadow-[9px_9px_0px_#000000] hover:opacity-90 transition-all duration-200">
+        <button 
+          onClick={() => handleNavigation("early-access-form")}
+          className="text-nowrap border-4 border-[#212121] bg-[#E1D6EA] shadow-[6px_6px_0px_#000000] py-1.5 px-3 h-[50px] font-bowlby font-[400] text-sm xl:text-xl text-[#2C1D39] text-center cursor-pointer hover:shadow-[9px_9px_0px_#000000] hover:opacity-90 transition-all duration-200">
           JOIN THE WAITLIST
         </button>
       </div>

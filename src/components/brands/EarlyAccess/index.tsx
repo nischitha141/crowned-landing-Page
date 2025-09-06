@@ -95,7 +95,7 @@ const EarlyAccess = () => {
   };
 
   return (
-    <div className="relative container">
+    <div id="early-access-form" className="relative container">
       <div className="flex flex-col items-center justify-center gap-4 md:gap-5 my-6 md:my-10 relative px-4 md:px-0">
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-bowlby text-[#424242] text-center leading-tight">
           Claim Your Spot
