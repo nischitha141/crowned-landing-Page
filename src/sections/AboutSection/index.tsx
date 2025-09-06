@@ -3,6 +3,26 @@ import Button from "@/components/Button";
 import Image from "next/image";
 
 const index = () => {
+  const handleNavigation = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerHeight = 100;
+      const viewportHeight = window.innerHeight;
+      const elementHeight = element.offsetHeight;
+
+      const elementTop = element.offsetTop;
+      const scrollPosition =
+        elementTop -
+        headerHeight -
+        (viewportHeight - headerHeight - elementHeight) / 2;
+
+      window.scrollTo({
+        top: Math.max(0, scrollPosition),
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div id="section-two" className="my-16 md:my-28 md:mt-32 bg-[#8459AB] flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-4">
       <div className="relative flex items-center justify-center p-4 mt-20 md:mt-0 md:p-0 order-2 md:order-1 h-[300px] md:h-auto">
@@ -15,7 +35,7 @@ const index = () => {
       <div className="flex flex-col justify-center items-center md:items-start gap-4 md:gap-6 text-white p-6 md:p-8 py-8 md:py-16 text-center md:text-left order-1 md:order-2">
         <h3 className="font-[400] text-3xl md:text-5xl lg:text-6xl font-bowlby leading-tight">WAIT, WHAT IS CROWNED?</h3>
         <p className="font-[600] font-sans text-lg md:text-2xl max-w-md md:max-w-none">It&apos;s a social recognition chain game. Crown your friends anonymously for being awesome<br className="hidden md:block" /> — and let the love ripple out.</p>
-        <Button text="Try it Out 🔥" />
+        <Button text="Try it Out 🔥" onClick={() => handleNavigation("section-five")} />
       </div>
     </div>
   );
