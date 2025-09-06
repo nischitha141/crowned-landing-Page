@@ -141,7 +141,7 @@ const EarlyAccess = () => {
                 className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
                   errors.socialAccount ? "border-red-500" : "border-[#757575]"
                 }`}
-                placeholder="you@company.com"
+                placeholder="e.g., https://www.instagram.com/yourhandle"
                 onFocus={() => handleFocus("socialAccount")}
                 onBlur={handleBlur}
               />
@@ -176,7 +176,7 @@ const EarlyAccess = () => {
                 className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
                   errors.contentCategory ? "border-red-500" : "border-[#757575]"
                 }`}
-                placeholder="olivia@untitledui.com"
+                placeholder="e.g., Fashion & Lifestyle"
                 onFocus={() => handleFocus("contentCategory")}
                 onBlur={handleBlur}
               />
