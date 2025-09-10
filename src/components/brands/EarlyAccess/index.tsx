@@ -96,15 +96,15 @@ const EarlyAccess = () => {
 
   return (
     <div id="early-access-form" className="relative container">
-      <div className="flex flex-col items-center justify-center gap-4 md:gap-5 my-6 md:my-10 relative px-4 md:px-0">
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bowlby text-[#424242] text-center leading-tight">
+      <div className="flex flex-col items-center justify-center gap-4 sm:gap-5 lg:gap-6 my-6 sm:my-8 lg:my-10 relative px-4 sm:px-6 lg:px-0">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bowlby text-[#424242] text-center leading-tight">
           Claim Your Spot
         </h1>
-        <p className="text-base md:text-xl font-sans text-center max-w-md md:max-w-none z-50">
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl font-sans text-center max-w-sm sm:max-w-md lg:max-w-none z-50 px-2 sm:px-0">
           Be one of the first brands to launch Branded Crowns and earn from the chain.
         </p>
 
-        <form onSubmit={handleSubmit} className="w-full z-50 max-w-[544px] flex flex-col items-center justify-center gap-4 md:gap-5">
+        <form onSubmit={handleSubmit} className="w-full z-50 max-w-[544px] flex flex-col items-center justify-center gap-3 sm:gap-4 lg:gap-5 px-2 sm:px-0">
           
           {/* Brand Name */}
           <div className="flex flex-col w-full">
@@ -183,19 +183,19 @@ const EarlyAccess = () => {
             </label>
             <div className="flex flex-wrap flex-row items-start justify-start gap-2">
               {campaignOptions.map((option) => (
-                <div key={option} className="flex items-center gap-2 border border-[#757575] p-1 grow">
+                <div key={option} className="flex items-center gap-2 border border-[#757575] p-2 sm:p-0  grow">
                   <input
                     type="checkbox"
                     id={option}
                     checked={formData.campaignTypes.includes(option)}
                     onChange={() => handleCampaignTypeChange(option)}
-                    className={`h-5 w-5 border-1 focus:outline-[#AE93C8] cursor-pointer ${
+                    className={`h-5 w-5 border-1 p-1 sm:p-0 focus:outline-[#AE93C8] cursor-pointer ${
                       errors.campaignTypes ? "border-red-500" : "border-[#757575]"
                     }`}
                   />
                   <label 
                     htmlFor={option} 
-                    className="text-[#424242] text-sm md:text-base cursor-pointer text-nowrap"
+                    className="text-[#424242] text-sm md:text-base cursor-pointer text-nowrap  sm:py-0 p-1"
                   >
                     {option}
                   </label>
@@ -325,13 +325,13 @@ const EarlyAccess = () => {
             </label>
             <div className="flex flex-wrap flex-row items-start justify-start gap-2">
               {cryptoOptions.map((option) => (
-                <div key={option.value} className="flex items-center gap-2 border border-[#757575] p-1 grow">
+                <div key={option.value} className="flex items-center gap-2 border border-[#757575] p-2 sm:p-1 flex-1 sm:grow">
                   <input
                     type="checkbox"
                     id={`crypto-${option.value}`}
                     checked={formData.cryptoRewards === option.value}
                     onChange={() => handleCryptoRewardChange(option.value)}
-                    className={`h-5 w-5 border-1 focus:outline-[#AE93C8] cursor-pointer ${
+                    className={`h-4 w-4 sm:h-5 sm:w-5 border-1 focus:outline-[#AE93C8] cursor-pointer flex-shrink-0 ${
                       errors.cryptoRewards ? "border-red-500" : "border-[#757575]"
                     }`}
                   />
@@ -357,11 +357,11 @@ const EarlyAccess = () => {
                 id="privacy"
                 checked={formData.privacy}
                 onChange={(e) => handleInputChange("privacy", e.target.checked)}
-                className={`h-5 w-5 border-1 focus:outline-none cursor-pointer ${
+                className={`h-4 w-4 sm:h-5 sm:w-5 border-1 focus:outline-none cursor-pointer flex-shrink-0 ${
                   errors.privacy ? "border-red-500" : "border-[#757575]"
                 }`}
               />
-              <label htmlFor="privacy" className="text-[#212121] text-base md:text-xl">
+              <label htmlFor="privacy" className="text-[#212121] text-sm sm:text-base lg:text-xl">
                 You agree to our friendly{" "}
                 <span>
                   {" "}

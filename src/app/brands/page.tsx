@@ -16,7 +16,7 @@ import EarlyAccess from "@/components/brands/EarlyAccess";
 const page = () => {
   return (
     <div className="bg-[#FFFFFF] flex flex-col relative">
-      <div className="min-h-[95vh] bg-[#F0EBF5] rounded-[40px] p-10 m-5 relative flex flex-col">
+      <div className="min-h-auto md:min-h-[95vh] bg-[#F0EBF5] rounded-[20px] sm:rounded-[40px] p-4 sm:p-8 lg:p-10 m-2 sm:m-5 relative flex flex-col">
         <Header />
         <Content />
         <Baloon />

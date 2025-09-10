@@ -37,26 +37,30 @@ const Footer = () => {
   };
 
   return (
-    <div className="my-5 md:my-12 mx-4 flex flex-col md:flex-row items-center md:items-start justify-between gap-8 md:gap-5 bg-[#E0E0E0] p-6 md:p-10 relative z-30 pointer-events-auto">
+    <div className="my-4 sm:my-6 lg:my-8 xl:my-12 mx-4 sm:mx-6 lg:mx-8 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 sm:gap-8 lg:gap-5 bg-[#E0E0E0] p-4 sm:p-6 lg:p-8 xl:p-10 relative z-30 pointer-events-auto">
       {/* Logo Section */}
-      <div className="flex flex-col items-center md:items-start justify-start text-center md:text-left">
+      <div className="flex flex-col items-center lg:items-start justify-start text-center lg:text-left">
         <Link href={"/"} className="cursor-pointer">
-          <div className="text-[#583A73] font-jakarta text-2xl md:text-3xl flex items-center gap-2 relative">
+          <div className="text-[#583A73] font-jakarta text-xl sm:text-2xl lg:text-3xl flex items-center gap-1 sm:gap-2 relative">
             <h3 className="font-[800]">CROWNED</h3>
-            <div className="w-2 h-2 md:w-2.5 md:h-2.5 bg-[#FCD310] rounded-full"></div>
+            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 lg:w-2.5 lg:h-2.5 bg-[#FCD310] rounded-full"></div>
             <Image
-              className="absolute -top-6 md:-top-9 left-1/2 right-1/2 transform -translate-x-1/2"
+              className="absolute -top-4 sm:-top-6 lg:-top-9 left-1/2 right-1/2 transform -translate-x-1/2"
               src="/assets/crown.svg"
               alt="Crowned"
               width={50}
               height={40}
+              style={{
+                width: 'auto',
+                height: 'auto',
+              }}
             />
           </div>
         </Link>
-        <p className="font-sans font-extrabold text-sm md:text-md mt-2">
+        <p className="font-sans font-extrabold text-xs sm:text-sm lg:text-md mt-2">
           Give Them Their Flowers.
         </p>
-        <p className="font-sans font-[400] italic text-sm md:text-md">
+        <p className="font-sans font-[400] italic text-xs sm:text-sm lg:text-md">
           Crown friends with real moments of love,
           <br /> recognition & gratitude.
         </p>
@@ -64,8 +68,8 @@ const Footer = () => {
 
       {/* Navigation Section */}
       <div className="flex flex-col items-center justify-center">
-        <div className="mb-6">
-          <ul className="font-sans font-extrabold text-base md:text-xl flex flex-wrap items-center justify-center gap-4 md:gap-8">
+        <div className="mb-4 sm:mb-6">
+          <ul className="font-sans font-extrabold text-sm sm:text-base lg:text-xl flex flex-wrap items-center justify-center gap-3 sm:gap-4 lg:gap-8">
             <li>
               <Link href={"/"} className="underline whitespace-nowrap hover:text-[#583A73] transition-colors cursor-pointer">
                 Home
@@ -126,8 +130,8 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="flex gap-6 md:gap-10">
-          <ul className="font-sans font-extrabold text-sm md:text-lg flex items-center justify-center gap-4 md:gap-8">
+        <div className="flex gap-4 sm:gap-6 lg:gap-10">
+          <ul className="font-sans font-extrabold text-xs sm:text-sm lg:text-lg flex flex-wrap items-center justify-center gap-3 sm:gap-4 lg:gap-8">
             <li>
               <Link 
                 href={"/terms"} 
@@ -155,20 +159,35 @@ const Footer = () => {
       </div>
 
       {/* Social Media Section */}
-      <div className="flex items-center justify-center gap-4 md:gap-5">
+      <div className="flex items-center justify-center gap-3 sm:gap-4 lg:gap-5">
         <Link href={SOCIAL_LINKS.INSTAGRAM} target="_blank" rel="noopener noreferrer">
-          <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-800 flex items-center justify-center">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full bg-gray-800 flex items-center justify-center">
             <Image
               src="/assets/instagram.svg"
               alt="Instagram"
-              width={20}
-              height={20}
+              width={16}
+              height={16}
+              className="sm:w-5 sm:h-5 lg:w-6 lg:h-6"
+              style={{
+                width: 'auto',
+                height: 'auto',
+              }}
             />
           </div>
         </Link>
         <Link href={SOCIAL_LINKS.TIKTOK} target="_blank" rel="noopener noreferrer">
-          <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-800 flex items-center justify-center">
-            <Image src="/assets/tiktok.svg" alt="TikTok" width={20} height={20} />
+          <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full bg-gray-800 flex items-center justify-center">
+            <Image 
+              src="/assets/tiktok.svg" 
+              alt="TikTok" 
+              width={16} 
+              height={16}
+              className="sm:w-5 sm:h-5 lg:w-6 lg:h-6"
+              style={{
+                width: 'auto',
+                height: 'auto',
+              }}
+            />
           </div>
         </Link>
       </div>
