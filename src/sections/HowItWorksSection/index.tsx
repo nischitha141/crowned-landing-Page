@@ -6,7 +6,7 @@ const index = () => {
     <div id="section-three" className="my-11 md:my-20 p-4 md:p-6 flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-4 mt-20 md:mt-[150px]">
       <div className="flex flex-col items-center md:items-start justify-center gap-4 md:gap-6 text-center md:text-left order-1 md:order-1">
         <h3 className="text-3xl md:text-5xl lg:text-6xl font-bowlby font-[400] text-[#424242] leading-tight">
-          HOW CROWNED WORKS 👑
+          HOW CROWNED WORKS?!
         </h3>
         <p className="text-[#545B5B] font-sans font-[400] text-lg md:text-2xl mt-2 md:mt-6 max-w-md md:max-w-none">
           Crown your friends. Get crowned back.
