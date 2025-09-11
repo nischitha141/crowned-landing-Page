@@ -47,9 +47,17 @@ const BrandCrowns = () => {
         <div className="flex gap-1 sm:gap-2 items-center">
           <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bowlby text-[#424242] leading-tight">
             Popular Brand Crowns
+            {/* Show lock icon right after "Crowns" on mobile only */}
+            <Image
+              src="assets/lock.svg"
+              alt="Crowned"
+              width={50}
+              height={40}
+              className="sm:hidden w-[30px] h-[30px] ml-1 inline-block align-middle"
+            />
           </h3>
 
-          {/* Hide lock icon on mobile, show on desktop */}
+          {/* Show lock icon on desktop only */}
           <Image
             src="assets/lock.svg"
             alt="Crowned"

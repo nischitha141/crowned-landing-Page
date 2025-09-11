@@ -30,7 +30,7 @@ const index = () => {
               <span className="font-bold text-base md:text-lg">App Store</span>
             </div>
           </Link>
-          <Link href={APP_LINKS.GOOGLE_PLAY} target="_blank" rel="noopener noreferrer" className="bg-black text-white px-4 py-2 md:py-1 rounded-xl border-2 border-[#BDBDBD] flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors cursor-pointer">
+          <Link href={APP_LINKS.GOOGLE_PLAY} target="_blank" rel="noopener noreferrer" className="pl-8 bg-black text-white px-4 py-2 md:py-1 rounded-xl border-2 border-[#BDBDBD] flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors cursor-pointer">
             <Image
               src="/assets/playstore.svg"
               alt="Google Play"

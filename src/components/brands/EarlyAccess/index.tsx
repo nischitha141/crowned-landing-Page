@@ -399,7 +399,7 @@ const EarlyAccess = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full text-nowrap border-2 border-[#212121] bg-[#E1D6EA] shadow-[6px_6px_0px_#000000] py-1.5 px-3 h-[40px] md:h-[44px] font-bowlby font-[400] text-lg md:text-xl text-[#2C1D39] text-center transition-all duration-200 ${
+              className={`w-full my-4 text-nowrap border-2 border-[#212121] bg-[#E1D6EA] shadow-[6px_6px_0px_#000000] py-1.5 px-3 h-[40px] md:h-[44px] font-bowlby font-[400] text-lg md:text-xl text-[#2C1D39] text-center transition-all duration-200 ${
                 isLoading
                   ? "opacity-50 cursor-not-allowed"
                   : "cursor-pointer hover:shadow-[9px_9px_0px_#000000] hover:opacity-90"
@@ -412,28 +412,28 @@ const EarlyAccess = () => {
 
         {/* Decorative Images */}
         <Image
-          className="absolute top-[5%] md:top-[10%] right-[5%] md:right-[10%] z-10 w-16 h-12 md:w-[125px] md:h-[100px]"
+          className="hidden md:block absolute top-[5%] md:top-[10%] right-[5%] md:right-[10%] z-10 w-16 h-12 md:w-[125px] md:h-[100px]"
           src="/assets/crown.svg"
           alt="crown"
           width={125}
           height={100}
         />
         <Image
-          className="absolute top-[5%] md:top-[10%] left-[5%] md:left-[10%] z-10 w-16 h-12 md:w-[125px] md:h-[100px]"
+          className="hidden md:block absolute top-[5%] md:top-[10%] left-[5%] md:left-[10%] z-10 w-16 h-12 md:w-[125px] md:h-[100px]"
           src="/assets/lock.svg"
           alt="lock"
           width={125}
           height={100}
         />
         <Image
-          className="absolute bottom-[30%] md:bottom-[20%] right-[5%] md:right-[10%] z-10 w-16 h-12 md:w-[125px] md:h-[100px]"
+          className="hidden md:block absolute bottom-[30%] md:bottom-[20%] right-[5%] md:right-[10%] z-10 w-16 h-12 md:w-[125px] md:h-[100px]"
           src="/assets/cloud.svg"
           alt="cloud"
           width={125}
           height={100}
         />
         <Image
-          className="absolute bottom-[30%] md:bottom-[20%] left-[5%] md:left-[10%] z-10 w-16 h-12 md:w-[125px] md:h-[100px]"
+          className="hidden md:block absolute bottom-[30%] md:bottom-[20%] left-[5%] md:left-[10%] z-10 w-16 h-12 md:w-[125px] md:h-[100px]"
           src="/assets/fifth_section_coin.svg"
           alt="coin"
           width={125}
