@@ -110,7 +110,7 @@ const EarlyAccess = () => {
           <div className="flex flex-col w-full">
             <label
               htmlFor="brandName"
-              className="text-[#424242] font-sans text-sm md:text-[14px]"
+              className="text-[#424242] font-[600] font-sans text-sm md:text-[14px]"
             >
               What&apos;s your brand name and industry?*
             </label>
@@ -120,7 +120,7 @@ const EarlyAccess = () => {
                 id="brandName"
                 value={formData.brandName}
                 onChange={(e) => handleInputChange("brandName", e.target.value)}
-                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base placeholder:text-[#868A92] placeholder:font-sans placeholder:font-[600] ${
                   errors.brandName ? "border-red-500" : "border-[#757575]"
                 }`}
                 placeholder="Aryl"
@@ -145,7 +145,7 @@ const EarlyAccess = () => {
           <div className="flex flex-col w-full">
             <label
               htmlFor="representative"
-              className="text-[#424242] font-sans text-sm md:text-[14px]"
+              className="text-[#424242] font-[600] font-sans text-sm md:text-[14px]"
             >
               Who is your representative and their contact?*
             </label>
@@ -155,7 +155,7 @@ const EarlyAccess = () => {
                 id="representative"
                 value={formData.representative}
                 onChange={(e) => handleInputChange("representative", e.target.value)}
-                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base placeholder:text-[#868A92] placeholder:font-sans placeholder:font-[600] ${
                   errors.representative ? "border-red-500" : "border-[#757575]"
                 }`}
                 placeholder="e.g. John Doe - Head of Partnerships, john@brand.com"
@@ -178,7 +178,7 @@ const EarlyAccess = () => {
 
           {/* Campaign Types */}
           <div className="flex flex-col w-full">
-            <label className="text-[#424242] font-sans text-sm md:text-[14px] mb-3">
+            <label className="text-[#424242] font-[600] font-sans text-sm md:text-[14px] mb-3">
               What type of campaign are you interested in?*
             </label>
             <div className="flex flex-wrap flex-row items-start justify-start gap-2">
@@ -201,7 +201,7 @@ const EarlyAccess = () => {
                   />
                   <label 
                     htmlFor={option} 
-                    className="text-[#424242] text-sm md:text-base cursor-pointer text-nowrap  sm:py-0 p-1"
+                    className="text-[#616161] font-sans text-sm md:text-base cursor-pointer text-nowrap font-[600]  sm:py-0 p-1"
                   >
                     {option}
                   </label>
@@ -217,7 +217,7 @@ const EarlyAccess = () => {
           <div className="flex flex-col w-full">
             <label
               htmlFor="marketingEmail"
-              className="text-[#424242] font-sans text-sm md:text-[14px]"
+              className="text-[#424242] font-[600] font-sans text-sm md:text-[14px]"
             >
               Marketing contact email
             </label>
@@ -233,7 +233,7 @@ const EarlyAccess = () => {
                 id="marketingEmail"
                 value={formData.marketingEmail}
                 onChange={(e) => handleInputChange("marketingEmail", e.target.value)}
-                className={`w-full h-[44px] pl-12 pr-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                className={`w-full h-[44px] pl-12 pr-4 bg-white border-1 focus:outline-none text-sm md:text-base placeholder:text-[#868A92] placeholder:font-sans placeholder:font-[600] ${
                   errors.marketingEmail ? "border-red-500" : "border-[#757575]"
                 }`}
                 placeholder="e.g. marketing@brand.com"
@@ -258,7 +258,7 @@ const EarlyAccess = () => {
           <div className="flex flex-col w-full">
             <label
               htmlFor="monthlyAccess"
-              className="text-[#424242] font-sans text-sm md:text-[14px]"
+              className="text-[#424242] font-[600] font-sans text-sm md:text-[14px]"
             >
               How much would you pay for monthly access ($500–$10k+)?*
             </label>
@@ -268,7 +268,7 @@ const EarlyAccess = () => {
                 id="monthlyAccess"
                 value={formData.monthlyAccess}
                 onChange={(e) => handleInputChange("monthlyAccess", e.target.value)}
-                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base placeholder:text-[#868A92] placeholder:font-sans placeholder:font-[600] ${
                   errors.monthlyAccess ? "border-red-500" : "border-[#757575]"
                 }`}
                 placeholder="e.g. $2,500 / month"
@@ -293,7 +293,7 @@ const EarlyAccess = () => {
           <div className="flex flex-col w-full">
             <label
               htmlFor="campaignBudget"
-              className="text-[#424242] font-sans text-sm md:text-[14px]"
+              className="text-[#424242] font-[600] font-sans text-sm md:text-[14px]"
             >
               Estimated campaign budget for launch ($10k+)?*
             </label>
@@ -303,7 +303,7 @@ const EarlyAccess = () => {
                 id="campaignBudget"
                 value={formData.campaignBudget}
                 onChange={(e) => handleInputChange("campaignBudget", e.target.value)}
-                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base placeholder:text-[#868A92] placeholder:font-sans placeholder:font-[600] ${
                   errors.campaignBudget ? "border-red-500" : "border-[#757575]"
                 }`}
                 placeholder="e.g. $25,000"
@@ -326,7 +326,7 @@ const EarlyAccess = () => {
 
           {/* Crypto Rewards */}
           <div className="flex flex-col w-full">
-            <label className="text-[#424242] font-sans text-sm md:text-[14px] mb-3">
+            <label className="text-[#424242] font-[600] font-sans text-sm md:text-[14px] mb-3">
               Are you interested in cryptobased reward chains?*
             </label>
             <div className="flex flex-wrap flex-row items-start justify-start gap-2">
@@ -349,7 +349,7 @@ const EarlyAccess = () => {
                   />
                   <label 
                     htmlFor={`crypto-${option.value}`} 
-                    className="text-[#424242] text-sm md:text-base cursor-pointer text-nowrap"
+                    className="text-[#616161] font-sans text-sm md:text-base cursor-pointer text-nowrap font-[600]"
                   >
                     {option.label}
                   </label>
@@ -379,7 +379,7 @@ const EarlyAccess = () => {
                   backgroundRepeat: 'no-repeat'
                 }}
               />
-              <label htmlFor="privacy" className="text-[#212121] text-sm sm:text-base lg:text-xl">
+              <label htmlFor="privacy" className="text-[#616161] font-sans text-sm sm:text-base lg:text-xl font-[600]">
                 You agree to our friendly{" "}
                 <span>
                   {" "}

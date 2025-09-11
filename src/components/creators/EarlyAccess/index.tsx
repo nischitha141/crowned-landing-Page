@@ -93,7 +93,7 @@ const EarlyAccess = () => {
           <div className="flex flex-col w-full">
             <label
               htmlFor="creatorName"
-              className="text-[#4E525A] font-sans text-sm md:text-[14px]"
+              className="text-[#424242] font-[600] font-sans text-sm md:text-[14px]"
             >
               What&apos;s your creator name or handle?*
             </label>
@@ -103,7 +103,7 @@ const EarlyAccess = () => {
                 id="creatorName"
                 value={formData.creatorName}
                 onChange={(e) => handleInputChange("creatorName", e.target.value)}
-                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base placeholder:text-[#868A92] placeholder:font-sans placeholder:font-[600] ${
                   errors.creatorName ? "border-red-500" : "border-[#757575]"
                 }`}
                 placeholder="Aryl"
@@ -128,7 +128,7 @@ const EarlyAccess = () => {
           <div className="flex flex-col w-full">
             <label
               htmlFor="socialAccount"
-              className="text-[#4E525A] font-sans text-sm md:text-[14px]"
+              className="text-[#424242] font-[600] font-sans text-sm md:text-[14px]"
             >
               Link to your main social account (TikTok, Instagram, etc.)*
             </label>
@@ -138,7 +138,7 @@ const EarlyAccess = () => {
                 id="socialAccount"
                 value={formData.socialAccount}
                 onChange={(e) => handleInputChange("socialAccount", e.target.value)}
-                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base placeholder:text-[#868A92] placeholder:font-sans placeholder:font-[600] ${
                   errors.socialAccount ? "border-red-500" : "border-[#757575]"
                 }`}
                 placeholder="e.g., https://www.instagram.com/yourhandle"
@@ -163,7 +163,7 @@ const EarlyAccess = () => {
           <div className="flex flex-col w-full">
             <label
               htmlFor="contentCategory"
-              className="text-[#4E525A] font-sans text-sm md:text-[14px]"
+              className="text-[#424242] font-[600] font-sans text-sm md:text-[14px]"
             >
               What content category best describes you? (e.g., music, fashion, lifestyle, crypto)
             </label>
@@ -173,7 +173,7 @@ const EarlyAccess = () => {
                 id="contentCategory"
                 value={formData.contentCategory}
                 onChange={(e) => handleInputChange("contentCategory", e.target.value)}
-                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base placeholder:text-[#868A92] placeholder:font-sans placeholder:font-[600] ${
                   errors.contentCategory ? "border-red-500" : "border-[#757575]"
                 }`}
                 placeholder="e.g., Fashion & Lifestyle"
@@ -196,7 +196,7 @@ const EarlyAccess = () => {
 
           {/* What are you excited about */}
           <div className="flex flex-col w-full">
-            <label className="text-[#4E525A] font-sans text-sm md:text-[14px] mb-3">
+            <label className="text-[#424242] font-[600] font-sans text-sm md:text-[14px] mb-3">
               What are you excited about?*
             </label>
             <div className="flex flex-wrap flex-row items-start justify-start gap-2">
@@ -219,7 +219,7 @@ const EarlyAccess = () => {
                   />
                   <label
                     htmlFor={option}
-                    className="text-[#4E525A] text-sm md:text-base cursor-pointer text-nowrap"
+                    className="text-[#616161] font-sans text-sm md:text-base cursor-pointer text-nowrap font-[600]"
                   >
                     {option}
                   </label>
@@ -249,7 +249,7 @@ const EarlyAccess = () => {
                   backgroundRepeat: 'no-repeat'
                 }}
               />
-              <label htmlFor="privacy" className="text-[#212121] text-sm sm:text-base lg:text-xl my-4">
+              <label htmlFor="privacy" className="text-[#616161] font-sans text-sm sm:text-base lg:text-xl font-[600] my-4">
                 You agree to our friendly{" "}
                 <span>
                   {" "}

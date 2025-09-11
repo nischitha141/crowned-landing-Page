@@ -143,7 +143,7 @@ const Index = () => {
                   id="firstName"
                   value={formData.firstName}
                   onChange={(e) => handleNameChange("firstName", e.target.value)}
-                  className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                  className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base placeholder:text-[#868A92] placeholder:font-sans placeholder:font-[600] ${
                     errors.firstName ? "border-red-500" : "border-[#757575]"
                   }`}
                   placeholder="Aryi"
@@ -179,7 +179,7 @@ const Index = () => {
                   id="lastName"
                   value={formData.lastName}
                   onChange={(e) => handleNameChange("lastName", e.target.value)}
-                  className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                  className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base placeholder:text-[#868A92] placeholder:font-sans placeholder:font-[600] ${
                     errors.lastName ? "border-red-500" : "border-[#757575]"
                   }`}
                   placeholder="Last name"
@@ -216,7 +216,7 @@ const Index = () => {
                 id="email"
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
-                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base placeholder:text-[#868A92] placeholder:font-sans placeholder:font-[600] ${
                   errors.email ? "border-red-500" : "border-[#757575]"
                 }`}
                 placeholder="you@company.com"
@@ -284,7 +284,7 @@ const Index = () => {
                   id="phone"
                   value={formData.phone}
                   onChange={(e) => handlePhoneChange(e.target.value)}
-                  className={`w-full h-[44px] px-4 bg-white border-1 border-l-0 focus:outline-none text-sm md:text-base ${
+                  className={`w-full h-[44px] px-4 bg-white border-1 border-l-0 focus:outline-none text-sm md:text-base placeholder:text-[#868A92] placeholder:font-sans placeholder:font-[600] ${
                     errors.phone || errors.countryCode ? "border-red-500" : "border-[#757575]"
                   }`}
                   placeholder={getPhoneNumberPlaceholder(selectedCountry)}
@@ -319,7 +319,7 @@ const Index = () => {
                 id="message"
                 value={formData.message}
                 onChange={(e) => handleInputChange("message", e.target.value)}
-                className={`w-full h-[128px] px-4 py-2 bg-white border-1 focus:outline-none text-sm md:text-base ${
+                className={`w-full h-[128px] px-4 py-2 bg-white border-1 focus:outline-none text-sm md:text-base placeholder:text-[#868A92] placeholder:font-sans placeholder:font-[600] ${
                   errors.message ? "border-red-500" : "border-[#757575]"
                 }`}
                 placeholder="Leave us a message..."
