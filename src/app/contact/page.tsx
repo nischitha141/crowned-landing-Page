@@ -346,9 +346,15 @@ const Index = () => {
                 id="privacy"
                 checked={formData.privacy}
                 onChange={(e) => handleInputChange("privacy", e.target.checked)}
-                className={`h-5 w-5 border-1 focus:outline-none cursor-pointer ${
-                  errors.privacy ? "border-red-500" : "border-[#757575]"
+                className={`h-5 w-5 border-2 rounded focus:outline-none cursor-pointer appearance-none checked:bg-[#AE93C8] checked:border-[#AE93C8] relative ${
+                  errors.privacy ? "border-red-500" : "border-[#AE93C8]"
                 }`}
+                style={{
+                  backgroundImage: formData.privacy ? `url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='m13.854 3.646-7.5 7.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6 10.293l7.146-7.147a.5.5 0 0 1 .708.708z'/%3e%3c/svg%3e")` : 'none',
+                  backgroundSize: '15px 15px',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat'
+                }}
               />
               <label htmlFor="privacy" className="text-[#212121] text-base md:text-xl">
                 You agree to our friendly{" "}
