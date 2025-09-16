@@ -37,6 +37,7 @@ const Index = () => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const { submitContact, isLoading } = useContact();
+  
 
   const handleFocus = (inputId: string) => setFocusedInput(inputId);
   const handleBlur = () => setFocusedInput(null);
