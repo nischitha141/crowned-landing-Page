@@ -18,7 +18,7 @@ const EarlyAccess = () => {
     monthlyAccess: "",
     campaignBudget: "",
     cryptoRewards: "",
-    privacy: false,
+    privacy: true, 
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -79,7 +79,7 @@ const EarlyAccess = () => {
           monthlyAccess: "",
           campaignBudget: "",
           cryptoRewards: "",
-          privacy: false,
+          privacy: true,
         });
       }
     } catch (error) {
@@ -362,7 +362,7 @@ const EarlyAccess = () => {
           </div>
 
           {/* Privacy Policy */}
-          <div className="flex flex-col items-start gap-2 text-sm md:text-[14px] font-sans text-[#424242] w-full">
+          {/* <div className="flex flex-col items-start gap-2 text-sm md:text-[14px] font-sans text-[#424242] w-full">
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
@@ -392,7 +392,7 @@ const EarlyAccess = () => {
             {errors.privacy && (
               <p className="text-red-500 text-sm mt-1">{errors.privacy}</p>
             )}
-          </div>
+          </div> */}
 
           {/* Submit Button */}
           <div className="relative flex items-center justify-center gap-5 w-full">

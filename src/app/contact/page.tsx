@@ -159,11 +159,11 @@ const Index = () => {
                   />
                 )}
               </div>
-              <div className="h-6 w-full">
-                {errors.firstName && (
+              {errors.firstName && (
+                <div className="h-6 w-full">
                   <p className="text-red-500 text-sm">{errors.firstName}</p>
-                )}
-              </div>
+                </div>
+              )}
             </div>
 
             <div className="flex flex-col items-start gap-2 w-full">
@@ -195,11 +195,11 @@ const Index = () => {
                   />
                 )}
               </div>
-              <div className="h-6 w-full">
-                {errors.lastName && (
+              {errors.lastName && (
+                <div className="h-6 w-full">
                   <p className="text-red-500 text-sm">{errors.lastName}</p>
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
 
