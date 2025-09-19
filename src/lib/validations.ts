@@ -60,26 +60,22 @@ export const brandsFormSchema = z.object({
   representative: z
     .string()
     .min(1, "Representative information is required")
-    .max(100, "Representative information must be less than 100 characters"),
+    .max(200, "Representative information must be less than 200 characters"),
   campaignTypes: z
     .array(z.string())
     .min(1, "Please select at least one campaign type"),
   marketingEmail: z
     .string()
-    .min(1, "Email is required")
-    .email("Please enter a valid email address"),
+    .optional(),
   monthlyAccess: z
     .string()
-    .min(1, "Monthly access is required")
-    .regex(/^\d+$/, "Monthly access must be a number"),
+    .min(1, "Monthly access amount is required"),
   campaignBudget: z
     .string()
-    .min(1, "Campaign budget is required")
-    .regex(/^\d+$/, "Campaign budget must be a number"),
+    .min(1, "Campaign budget is required"),
   cryptoRewards: z
     .string()
-    .min(1, "Crypto rewards amount is required")
-    .regex(/^\d+$/, "Please select at least one Crypto rewards type"),
+    .min(1, "Please select a crypto rewards option"),
   privacy: z.boolean().refine((val) => val === true, {
     message: "You must agree to the privacy policy",
   }),

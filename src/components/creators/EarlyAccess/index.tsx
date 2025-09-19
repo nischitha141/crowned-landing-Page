@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Toaster } from "react-hot-toast";
 import { useCreators } from "@/hooks/useCreators";
 import { creatorsFormSchema, CreatorsFormData } from "@/lib/validations";
@@ -11,12 +10,13 @@ import { ZodError } from "zod";
 const EarlyAccess = () => {
   const { submitCreators, isLoading } = useCreators();
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
+  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<CreatorsFormData>({
     creatorName: "",
     socialAccount: "",
     contentCategory: "",
     excitedAbout: [],
-    privacy: true, 
+    privacy: true,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -47,9 +47,58 @@ const EarlyAccess = () => {
     handleInputChange('excitedAbout', updatedOptions);
   };
 
+  const validateStep = (step: number): boolean => {
+    const stepErrors: Record<string, string> = {};
+
+    if (step === 1) {
+      if (!formData.creatorName.trim()) stepErrors.creatorName = "Brand name is required";
+      if (!formData.socialAccount.trim()) stepErrors.socialAccount = "Representative is required";
+    } else if (step === 2) {
+      if (formData.contentCategory.length === 0) stepErrors.contentCategory = "Please select at least one content category";
+    } else if (step === 3) {
+      if (formData.excitedAbout.length === 0) stepErrors.excitedAbout = "Please select at least one option";
+      
+    }
+
+    setErrors(stepErrors);
+    return Object.keys(stepErrors).length === 0;
+  };
+
+  const handleNextStep = () => {
+    if (validateStep(currentStep)) {
+      setCurrentStep(prev => prev + 1);
+    }
+  };
+
+    const isStepComplete = (step: number): boolean => {
+    if (step === 1) {
+      return formData.creatorName.trim() !== "" && formData.socialAccount.trim() !== "";
+    } else if (step === 2) {
+      return formData.contentCategory.length > 0;
+    } else if (step === 3) {
+      return formData.excitedAbout.length > 0;
+    }
+    return false;
+  };
+
+    const getButtonText = (): string => {
+    switch (currentStep) {
+      case 1: return "Next - Your Vibe 🎯";
+      case 2: return "Next - What Excites You 🚀";
+      case 3: return "Submit & Lock My Spot 👑";
+      default: return "Submit & Lock My Spot 👑";
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (currentStep < 3) {
+      handleNextStep();
+      return;
+    }
     setErrors({});
+
     
     try {
       const validatedData = creatorsFormSchema.parse(formData);
@@ -64,6 +113,8 @@ const EarlyAccess = () => {
           excitedAbout: [],
           privacy: true, 
         });
+
+         setCurrentStep(1);
       }
     } catch (error) {
       if (error instanceof ZodError) {
@@ -89,6 +140,8 @@ const EarlyAccess = () => {
 
         <form onSubmit={handleSubmit} className="w-full z-50 max-w-[544px] flex flex-col items-center justify-center gap-3 sm:gap-4 lg:gap-5 px-2 sm:px-0">
           
+          {currentStep >= 1 && (
+          <>
           {/* Creator Name */}
           <div className="flex flex-col w-full">
             <label
@@ -157,8 +210,12 @@ const EarlyAccess = () => {
             {errors.socialAccount && (
               <p className="text-red-500 text-sm mt-1">{errors.socialAccount}</p>
             )}
-          </div>
+              </div>
+              </>
+          )}
 
+          {currentStep >= 2 && (
+          <>
           {/* Content Category */}
           <div className="flex flex-col w-full">
             <label
@@ -192,8 +249,12 @@ const EarlyAccess = () => {
             {errors.contentCategory && (
               <p className="text-red-500 text-sm mt-1">{errors.contentCategory}</p>
             )}
-          </div>
+              </div>
+              </>
+          )}
 
+          {currentStep >= 3 && (
+          <>
           {/* What are you excited about */}
           <div className="flex flex-col w-full">
             <label className="text-[#424242] font-[600] font-sans text-sm md:text-[14px] mb-3">
@@ -229,7 +290,9 @@ const EarlyAccess = () => {
             {errors.excitedAbout && (
               <p className="text-red-500 text-sm mt-1">{errors.excitedAbout}</p>
             )}
-          </div>
+              </div>
+              </>
+          )}
 
           {/* Privacy Policy */}
           {/* <div className="flex flex-col items-start gap-2 text-sm md:text-[14px] font-sans text-[#424242] w-full">
@@ -268,14 +331,17 @@ const EarlyAccess = () => {
           <div className="relative flex items-center justify-center gap-5 w-full">
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isLoading || !isStepComplete(currentStep)}
               className={`w-full my-4 text-nowrap border-2 border-[#212121] bg-[#E1D6EA] shadow-[6px_6px_0px_#000000] py-1.5 px-3 h-[40px] md:h-[44px] font-bowlby font-[400] text-lg md:text-xl text-[#2C1D39] text-center transition-all duration-200 ${
-                isLoading
+                isLoading || !isStepComplete(currentStep)
                   ? "opacity-50 cursor-not-allowed"
                   : "cursor-pointer hover:shadow-[9px_9px_0px_#000000] hover:opacity-90"
               }`}
             >
-              {isLoading ? "SUBMITTING..." : "GET ME EARLY ACCESS"}
+              {isLoading && (
+                <div className="w-5 h-5 border-2 border-[#2C1D39] border-t-transparent rounded-full animate-spin"></div>
+              )}
+              {isLoading ? "SUBMITTING..." : getButtonText()}
             </button>
           </div>
         </form>
