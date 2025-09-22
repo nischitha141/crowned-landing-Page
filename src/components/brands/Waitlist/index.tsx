@@ -1,30 +1,28 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import Link from "next/link";
-import { APP_LINKS } from "@/constants/links";
 import EmailCTA from "@/components/shared/EmailCTA";
 
 const index = () => {
-  const handleNavigation = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerHeight = 250;
-      const viewportHeight = window.innerHeight;
-      const elementHeight = element.offsetHeight;
+  // const handleNavigation = (sectionId: string) => {
+  //   const element = document.getElementById(sectionId);
+  //   if (element) {
+  //     const headerHeight = 250;
+  //     const viewportHeight = window.innerHeight;
+  //     const elementHeight = element.offsetHeight;
 
-      const elementTop = element.offsetTop;
-      const scrollPosition =
-        elementTop -
-        headerHeight -
-        (viewportHeight - headerHeight - elementHeight) / 2;
+  //     const elementTop = element.offsetTop;
+  //     const scrollPosition =
+  //       elementTop -
+  //       headerHeight -
+  //       (viewportHeight - headerHeight - elementHeight) / 2;
 
-      window.scrollTo({
-        top: Math.max(0, scrollPosition),
-        behavior: "smooth",
-      });
-    }
-  };
+  //     window.scrollTo({
+  //       top: Math.max(0, scrollPosition),
+  //       behavior: "smooth",
+  //     });
+  //   }
+  // };
 
   return (
     <div id="section-five" className="my-8 sm:my-12 lg:my-16 xl:my-20 mx-4 sm:mx-6 lg:mx-10 xl:mx-20 mt-0 p-4 sm:p-6 lg:p-10 xl:p-14 py-8 sm:py-12 lg:py-16 xl:py-24 bg-[#8459AB] text-white flex flex-col items-center justify-center gap-4 sm:gap-6 lg:gap-8 xl:gap-10 relative">

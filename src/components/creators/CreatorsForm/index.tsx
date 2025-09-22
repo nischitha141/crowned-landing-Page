@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Toaster } from "react-hot-toast";
+import { useSearchParams } from "next/navigation";
 import { useCreators } from "@/hooks/useCreators";
 import { creatorsFormSchema, CreatorsFormData } from "@/lib/validations";
 import { ZodError } from "zod";
@@ -10,6 +11,7 @@ const CreatorsForm = () => {
   const { submitCreators, isLoading } = useCreators();
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
   const [currentStep, setCurrentStep] = useState(1);
+  const searchParams = useSearchParams();
   const [formData, setFormData] = useState<CreatorsFormData>({
     email: "",
     creatorName: "",
@@ -18,6 +20,13 @@ const CreatorsForm = () => {
     excitedAbout: [],
     privacy: true,
   });
+
+  useEffect(() => {
+    const emailParam = searchParams.get('email');
+    if (emailParam) {
+      setFormData(prev => ({ ...prev, email: emailParam }));
+    }
+  }, [searchParams]);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const excitedOptions = [
@@ -51,7 +60,6 @@ const CreatorsForm = () => {
     const stepErrors: Record<string, string> = {};
 
     if (step === 1) {
-      if (!formData.email.trim()) stepErrors.email = "Email is required";
       if (!formData.creatorName.trim()) stepErrors.creatorName = "Creator name is required";
       if (!formData.socialAccount.trim()) stepErrors.socialAccount = "Social account is required";
     } else if (step === 2) {
@@ -72,7 +80,7 @@ const CreatorsForm = () => {
 
   const isStepComplete = (step: number): boolean => {
     if (step === 1) {
-      return formData.email.trim() !== "" && formData.creatorName.trim() !== "" && formData.socialAccount.trim() !== "";
+      return formData.creatorName.trim() !== "" && formData.socialAccount.trim() !== "";
     } else if (step === 2) {
       return formData.contentCategory.length > 0;
     } else if (step === 3) {
@@ -104,8 +112,9 @@ const CreatorsForm = () => {
       const result = await submitCreators(validatedData);
 
       if (result.success) {
+        const emailParam = searchParams.get('email');
         setFormData({
-          email: "",
+          email: emailParam || "",
           creatorName: "",
           socialAccount: "",
           contentCategory: "",
@@ -140,41 +149,6 @@ const CreatorsForm = () => {
 
           {currentStep >= 1 && (
           <>
-          {/* Email */}
-          <div className="flex flex-col w-full">
-            <label
-              htmlFor="email"
-              className="text-[#424242] font-[600] font-sans text-sm md:text-[14px]"
-            >
-              Your email address*
-            </label>
-            <div className="relative">
-              <input
-                type="email"
-                id="email"
-                value={formData.email}
-                onChange={(e) => handleInputChange("email", e.target.value)}
-                className={`w-full h-[44px] px-4 bg-white border-1 focus:outline-none text-sm md:text-base placeholder:text-[#868A92] placeholder:font-sans placeholder:font-[600] ${
-                  errors.email ? "border-red-500" : "border-[#757575]"
-                }`}
-                placeholder="your.email@example.com"
-                onFocus={() => handleFocus("email")}
-                onBlur={handleBlur}
-              />
-              {focusedInput === "email" && (
-                <div
-                  className="absolute inset-0 border-3 rounded-md pointer-events-none"
-                  style={{
-                    borderImage: "linear-gradient(90deg, #7024B4, #F8A80D) 1",
-                  }}
-                />
-              )}
-            </div>
-            {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-            )}
-          </div>
-
           <div className="flex flex-col w-full">
             <label
               htmlFor="creatorName"

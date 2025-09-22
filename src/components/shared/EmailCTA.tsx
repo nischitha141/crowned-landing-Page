@@ -54,7 +54,9 @@ const EmailCTA: React.FC<EmailCTAProps> = ({
     }
 
     if (targetPage) {
-      router.push(targetPage);
+      // Pass email as URL parameter
+      const url = `${targetPage}?email=${encodeURIComponent(email)}`;
+      router.push(url);
     } else if (targetSectionId) {
       handleNavigation(targetSectionId);
     }
@@ -71,7 +73,7 @@ const EmailCTA: React.FC<EmailCTAProps> = ({
       />
       <button
         onClick={handleSubmit}
-        className="px-6 py-4 text-white font-bowlby text-xl rounded-full mx-3 my-1 transition-all duration-200 hover:opacity-90 active:scale-95"
+        className="px-6 py-4 text-white font-bowlby text-xl rounded-full mx-3 my-1 transition-all duration-200 hover:opacity-90 active:scale-95 cursor-pointer"
         style={{
           background:
             "linear-gradient(135deg, #583A73 0%, #8459AB 25%, #AE93C8 50%, #8459AB 75%, #583A73 100%)",

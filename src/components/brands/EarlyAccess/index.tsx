@@ -19,6 +19,7 @@ const EarlyAccess = () => {
     campaignBudget: "",
     cryptoRewards: "",
     privacy: true,
+    email: ""
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -132,6 +133,7 @@ const EarlyAccess = () => {
           campaignBudget: "",
           cryptoRewards: "",
           privacy: true,
+          email: ""
         });
         setCurrentStep(1);
       }

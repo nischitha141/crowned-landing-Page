@@ -3,25 +3,25 @@ import React from 'react'
 import EmailCTA from "@/components/shared/EmailCTA";
 
 const index = () => {
-  const handleNavigation = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerHeight = 250;
-      const viewportHeight = window.innerHeight;
-      const elementHeight = element.offsetHeight;
+  // const handleNavigation = (sectionId: string) => {
+  //   const element = document.getElementById(sectionId);
+  //   if (element) {
+  //     const headerHeight = 250;
+  //     const viewportHeight = window.innerHeight;
+  //     const elementHeight = element.offsetHeight;
 
-      const elementTop = element.offsetTop;
-      const scrollPosition =
-        elementTop -
-        headerHeight -
-        (viewportHeight - headerHeight - elementHeight) / 2;
+  //     const elementTop = element.offsetTop;
+  //     const scrollPosition =
+  //       elementTop -
+  //       headerHeight -
+  //       (viewportHeight - headerHeight - elementHeight) / 2;
 
-      window.scrollTo({
-        top: Math.max(0, scrollPosition),
-        behavior: "smooth",
-      });
-    }
-  };
+  //     window.scrollTo({
+  //       top: Math.max(0, scrollPosition),
+  //       behavior: "smooth",
+  //     });
+  //   }
+  // };
 
   return (
     <div className="flex flex-col items-center justify-between my-8 sm:my-16 text-center gap-12 sm:gap-24 h-full px-4 sm:px-0">

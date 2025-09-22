@@ -1,30 +1,28 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import Link from "next/link";
-import { APP_LINKS } from "@/constants/links";
 import EmailCTA from "@/components/shared/EmailCTA";
 
 const index = () => {
-  const handleNavigation = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerHeight = 100;
-      const viewportHeight = window.innerHeight;
-      const elementHeight = element.offsetHeight;
+  // const handleNavigation = (sectionId: string) => {
+  //   const element = document.getElementById(sectionId);
+  //   if (element) {
+  //     const headerHeight = 100;
+  //     const viewportHeight = window.innerHeight;
+  //     const elementHeight = element.offsetHeight;
 
-      const elementTop = element.offsetTop;
-      const scrollPosition =
-        elementTop -
-        headerHeight -
-        (viewportHeight - headerHeight - elementHeight) / 2;
+  //     const elementTop = element.offsetTop;
+  //     const scrollPosition =
+  //       elementTop -
+  //       headerHeight -
+  //       (viewportHeight - headerHeight - elementHeight) / 2;
 
-      window.scrollTo({
-        top: Math.max(0, scrollPosition),
-        behavior: "smooth",
-      });
-    }
-  };
+  //     window.scrollTo({
+  //       top: Math.max(0, scrollPosition),
+  //       behavior: "smooth",
+  //     });
+  //   }
+  // };
 
   return (
     <div
