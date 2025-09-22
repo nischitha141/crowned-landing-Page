@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Toaster } from "react-hot-toast";
@@ -6,8 +6,9 @@ import { useSearchParams } from "next/navigation";
 import { useBrands } from "@/hooks/useBrands";
 import { brandsFormSchema, BrandsFormData } from "@/lib/validations";
 import { ZodError } from "zod";
+import { Suspense } from 'react';
 
-const BrandsForm = () => {
+function BrandsFormContent() {
   const { submitBrands, isLoading } = useBrands();
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
   const [currentStep, setCurrentStep] = useState(1);
@@ -448,6 +449,12 @@ const BrandsForm = () => {
       <Toaster />
     </div>
   );
-};
+}
 
-export default BrandsForm;
+export default function BrandsForm() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
+      <BrandsFormContent />
+    </Suspense>
+  );
+}
