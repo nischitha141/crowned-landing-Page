@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Toaster } from "react-hot-toast";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useCreators } from "@/hooks/useCreators";
 import { creatorsFormSchema, CreatorsFormData } from "@/lib/validations";
 import { ZodError } from "zod";
@@ -13,8 +13,9 @@ function CreatorsFormContent() {
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
   const [currentStep, setCurrentStep] = useState(1);
   const searchParams = useSearchParams();
+  const router = useRouter();
   const [formData, setFormData] = useState<CreatorsFormData>({
-    email: "",
+    marketingEmail: "",
     creatorName: "",
     socialAccount: "",
     contentCategory: "",
@@ -25,7 +26,7 @@ function CreatorsFormContent() {
   useEffect(() => {
     const emailParam = searchParams.get('email');
     if (emailParam) {
-      setFormData(prev => ({ ...prev, email: emailParam }));
+      setFormData(prev => ({ ...prev, marketingEmail: emailParam }));
     }
   }, [searchParams]);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -115,7 +116,7 @@ function CreatorsFormContent() {
       if (result.success) {
         const emailParam = searchParams.get('email');
         setFormData({
-          email: emailParam || "",
+          marketingEmail: emailParam || "",
           creatorName: "",
           socialAccount: "",
           contentCategory: "",
@@ -123,6 +124,7 @@ function CreatorsFormContent() {
           privacy: true,
         });
         setCurrentStep(1);
+        router.push('/creators');
       }
     } catch (error) {
       if (error instanceof ZodError) {

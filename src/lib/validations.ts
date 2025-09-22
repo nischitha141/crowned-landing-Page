@@ -89,10 +89,9 @@ export type BrandsFormData = z.infer<typeof brandsFormSchema>;
 
 // Creators form validation schema
 export const creatorsFormSchema = z.object({
-  email: z
+  marketingEmail: z
     .string()
-    .min(1, "Email is required")
-    .email("Please enter a valid email address"),
+    .min(1, "Email is required"),
   creatorName: z
     .string()
     .min(1, "Creator name is required")

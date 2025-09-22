@@ -12,6 +12,7 @@ export const useCreators = () => {
     
     try {
       const payload = {
+        marketingEmail: formData.marketingEmail,
         creatorName: formData.creatorName,
         socialLink: formData.socialAccount,
         contentCategory: formData.contentCategory,

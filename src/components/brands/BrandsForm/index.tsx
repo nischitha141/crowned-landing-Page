@@ -2,17 +2,19 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Toaster } from "react-hot-toast";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useBrands } from "@/hooks/useBrands";
 import { brandsFormSchema, BrandsFormData } from "@/lib/validations";
 import { ZodError } from "zod";
 import { Suspense } from 'react';
+
 
 function BrandsFormContent() {
   const { submitBrands, isLoading } = useBrands();
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
   const [currentStep, setCurrentStep] = useState(1);
   const searchParams = useSearchParams();
+  const router = useRouter();
   const [formData, setFormData] = useState<BrandsFormData>({
     email: "",
     brandName: "",
@@ -28,7 +30,7 @@ function BrandsFormContent() {
   useEffect(() => {
     const emailParam = searchParams.get('email');
     if (emailParam) {
-      setFormData(prev => ({ ...prev, email: emailParam }));
+      setFormData(prev => ({ ...prev, email: emailParam , marketingEmail: emailParam}));
     }
   }, [searchParams]);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -136,13 +138,14 @@ function BrandsFormContent() {
           brandName: "",
           representative: "",
           campaignTypes: [],
-          marketingEmail: "",
+          marketingEmail: emailParam || "",
           monthlyAccess: "",
           campaignBudget: "",
           cryptoRewards: "",
           privacy: true,
         });
         setCurrentStep(1);
+        router.push('/brands');
       }
     } catch (error) {
       if (error instanceof ZodError) {
