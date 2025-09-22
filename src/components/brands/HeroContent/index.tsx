@@ -1,5 +1,6 @@
 "use client";
 import React from 'react'
+import EmailCTA from "@/components/shared/EmailCTA";
 
 const index = () => {
   const handleNavigation = (sectionId: string) => {
@@ -34,11 +35,13 @@ const index = () => {
               campaigns that reach the right Gen Z audiences.
             </p>
 
-            <button 
+            {/* <button
               onClick={() => handleNavigation("early-access-form")}
               className="w-full max-w-[400px] sm:w-[400px] border-2 border-[#212121] bg-[#E1D6EA] shadow-[4px_4px_0px_#000000] sm:shadow-[6px_6px_0px_#000000] py-3 sm:py-1.5 px-3 h-[50px] sm:h-[60px] font-bowlby font-[400] text-sm sm:text-sm xl:text-xl text-[#2C1D39] text-center cursor-pointer hover:shadow-[6px_6px_0px_#000000] sm:hover:shadow-[9px_9px_0px_#000000] hover:opacity-90 transition-all duration-200">
               GET ME EARLY ACCESS 🔥
-            </button>
+            </button> */}
+
+        <EmailCTA targetPage="/brands/submit" buttonText="Get Early Access" />
           </div>
 
           <div className="bg-[#111827] text-white font-sans text-sm sm:text-base rounded-full py-2 sm:py-3 px-4 sm:px-6 max-w-full text-center">

@@ -52,6 +52,10 @@ export type ContactFormData = z.infer<typeof contactFormSchema>;
 
 // Brands form validation schema
 export const brandsFormSchema = z.object({
+  email: z
+    .string()
+    .min(1, "Email is required")
+    .email("Please enter a valid email address"),
   brandName: z
     .string()
     .min(1, "Brand name is required")
@@ -85,6 +89,10 @@ export type BrandsFormData = z.infer<typeof brandsFormSchema>;
 
 // Creators form validation schema
 export const creatorsFormSchema = z.object({
+  email: z
+    .string()
+    .min(1, "Email is required")
+    .email("Please enter a valid email address"),
   creatorName: z
     .string()
     .min(1, "Creator name is required")

@@ -8,7 +8,6 @@ import ViralStrategy from "@/components/creators/ViralCard";
 import Footer from "@/components/creators/Footer/Index";
 
 import Waitlist from "@/components/creators/Waitlist";
-import EarlyAccess from "@/components/creators/EarlyAccess";
 
 const page = () => {
   return (
@@ -22,8 +21,6 @@ const page = () => {
       <BrandCrowns />
 
       <ViralStrategy />
-
-      <EarlyAccess />
 
       <Waitlist />
 

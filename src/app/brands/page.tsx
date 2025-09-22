@@ -11,7 +11,6 @@ import ViralStrategy from "@/components/brands/ViralCard";
 import Footer from "@/components/brands/Footer/Index";
 
 import Waitlist from "@/components/brands/Waitlist";
-import EarlyAccess from "@/components/brands/EarlyAccess";
 
 const page = () => {
   return (
@@ -25,8 +24,6 @@ const page = () => {
       <BrandCrowns />
 
       <ViralStrategy />
-
-      <EarlyAccess />
 
       <Waitlist />
 
