@@ -17,6 +17,7 @@ const EarlyAccess = () => {
     contentCategory: "",
     excitedAbout: [],
     privacy: true,
+    email: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -112,6 +113,7 @@ const EarlyAccess = () => {
           contentCategory: "",
           excitedAbout: [],
           privacy: true, 
+          email: ""
         });
 
          setCurrentStep(1);
