@@ -130,7 +130,7 @@ const CreatorsForm = () => {
     <div className="relative container">
       <div className="flex flex-col items-center justify-center gap-4 sm:gap-5 lg:gap-6 my-6 sm:my-8 lg:my-10 relative px-4 sm:px-6 lg:px-0">
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bowlby text-[#424242] text-center leading-tight">
-          You're In Early!
+          You&apos;re In Early!
         </h1>
         <p className="text-sm sm:text-base md:text-lg lg:text-xl font-sans text-center max-w-[600px] z-50 px-2 sm:px-0">
           Lock your early creator spot and tell us a bit about you. The more we know, the better collabs we can line up for you.
