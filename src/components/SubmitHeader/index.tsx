@@ -24,7 +24,7 @@ const SubmitHeader: React.FC<SubmitHeaderProps> = ({ backgroundColor = "#FFFAF1"
             <h3 className="font-[800]">CROWNED</h3>
             <div className="w-2 h-2 md:w-2.5 md:h-2.5 bg-[#FCD310] rounded-full"></div>
             <Image
-              className="absolute -top-6 md:-top-9 left-1/2 right-1/2 transform -translate-x-1/2"
+              className="absolute -top-3 md:-top-5 left-1/2 right-1/2 transform -translate-x-1/2"
               src="/assets/crown.svg"
               alt="Crowned"
               width={50}
