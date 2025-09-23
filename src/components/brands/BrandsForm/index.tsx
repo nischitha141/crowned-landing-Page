@@ -404,7 +404,7 @@ function BrandsFormContent() {
             <button
               type="submit"
               disabled={isLoading || !isStepComplete(currentStep)}
-              className={`w-full my-4 text-nowrap border-2 border-[#212121] bg-[#E1D6EA] shadow-[6px_6px_0px_#000000] py-1.5 px-3 h-[40px] md:h-[44px] font-bowlby font-[400] text-lg md:text-xl text-[#2C1D39] text-center transition-all duration-200 flex items-center justify-center gap-2 ${
+              className={`w-[70%] my-4 border-2 border-[#212121] bg-[#E1D6EA] shadow-[6px_6px_0px_#000000] py-1.5 px-3 min-h-[40px] md:min-h-[44px] font-bowlby font-[400] text-sm md:text-lg text-[#2C1D39] text-center transition-all duration-200 flex items-center justify-center gap-2 ${
                 isLoading || !isStepComplete(currentStep)
                   ? "opacity-50 cursor-not-allowed bg-[#F5F5F5] text-[#9E9E9E]"
                   : "cursor-pointer hover:shadow-[9px_9px_0px_#000000] hover:opacity-90"
