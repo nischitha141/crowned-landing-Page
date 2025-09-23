@@ -12,12 +12,12 @@ const EarlyAccess = () => {
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<CreatorsFormData>({
+    marketingEmail: "",
     creatorName: "",
     socialAccount: "",
     contentCategory: "",
     excitedAbout: [],
     privacy: true,
-    email: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -108,12 +108,12 @@ const EarlyAccess = () => {
       if (result.success) {
         // Reset form on success
         setFormData({
+          marketingEmail: "",
           creatorName: "",
           socialAccount: "",
           contentCategory: "",
           excitedAbout: [],
-          privacy: true, 
-          email: ""
+          privacy: true,
         });
 
          setCurrentStep(1);

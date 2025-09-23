@@ -70,7 +70,8 @@ export const brandsFormSchema = z.object({
     .min(1, "Please select at least one campaign type"),
   marketingEmail: z
     .string()
-    .optional(),
+    .min(1, "Email is required")
+    .email("Please enter a valid email address"),
   monthlyAccess: z
     .string()
     .min(1, "Monthly access amount is required"),
@@ -91,7 +92,8 @@ export type BrandsFormData = z.infer<typeof brandsFormSchema>;
 export const creatorsFormSchema = z.object({
   marketingEmail: z
     .string()
-    .min(1, "Email is required"),
+    .min(1, "Email is required")
+    .email("Please enter a valid email address"),
   creatorName: z
     .string()
     .min(1, "Creator name is required")

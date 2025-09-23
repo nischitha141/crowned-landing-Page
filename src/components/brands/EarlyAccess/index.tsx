@@ -11,6 +11,7 @@ const EarlyAccess = () => {
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<BrandsFormData>({
+    email: "",
     brandName: "",
     representative: "",
     campaignTypes: [],
@@ -19,7 +20,6 @@ const EarlyAccess = () => {
     campaignBudget: "",
     cryptoRewards: "",
     privacy: true,
-    email: ""
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -125,6 +125,7 @@ const EarlyAccess = () => {
       if (result.success) {
         // Reset form on success
         setFormData({
+          email: "",
           brandName: "",
           representative: "",
           campaignTypes: [],
@@ -133,7 +134,6 @@ const EarlyAccess = () => {
           campaignBudget: "",
           cryptoRewards: "",
           privacy: true,
-          email: ""
         });
         setCurrentStep(1);
       }
