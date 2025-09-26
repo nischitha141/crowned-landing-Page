@@ -59,6 +59,40 @@ body {
   scrollbar-width: none;
 }
 
+/* Override Tailwind's default container max-width for large screens */
+@media (min-width: 64rem) {
+  .container {
+    max-width: 74rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .container {
+    padding: 0 2%;
+  }
+}
+
+/* Responsive adjustments for 1024px+ screens */
+@media (min-width: 1024px) {
+  /* Reduce text sizes for better spacing */
+  .text-4xl { font-size: 2rem; line-height: 2.5rem; }
+  .text-5xl { font-size: 2.5rem; line-height: 3rem; }
+  .text-6xl { font-size: 3rem; line-height: 3.5rem; }
+  .text-7xl { font-size: 3.5rem; line-height: 4rem; }
+
+  /* Reduce padding and margins */
+  .py-16 { padding-top: 3rem; padding-bottom: 3rem; }
+  .py-20 { padding-top: 4rem; padding-bottom: 4rem; }
+  .py-24 { padding-top: 5rem; padding-bottom: 5rem; }
+  .px-8 { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .px-12 { padding-left: 2rem; padding-right: 2rem; }
+
+  /* Reduce gap spacing */
+  .gap-8 { gap: 1.5rem; }
+  .gap-12 { gap: 2rem; }
+  .gap-16 { gap: 2.5rem; }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 2%;

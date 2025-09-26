@@ -36,7 +36,7 @@ const Index = () => {
 
   return (
     <div className="pb-[1px] rounded-lg bg-gradient-to-r from-white via-80% via-[#FDE6D4] to-[#FFC2E9] relative">
-      <div className="flex items-center justify-between py-6 md:py-10 md:pt-12 border-transparent px-3 bg-[#FFFAF1]">
+      <div className="flex items-center justify-between py-6 md:py-8 xl:py-10 xl:pt-12 border-transparent px-2 lg:px-3 xl:px-3 bg-[#FFFAF1]">
         {/* Logo */}
         <Link href={"/"} className="cursor-pointer z-[500]">
           <div className="text-[#583A73] font-jakarta text-xl md:text-2xl flex items-center gap-2 relative">
@@ -53,7 +53,7 @@ const Index = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-5 font-sans text-[#212121] text-lg font-[900]">
+        <div className="hidden lg:flex items-center gap-3 xl:gap-5 font-sans text-[#212121] text-base xl:text-lg font-[900]">
           <button
             onClick={() => handleNavigation("section-two")}
             className="nav-button cursor-pointer"
@@ -84,9 +84,9 @@ const Index = () => {
         </div>
 
         {/* Desktop Action Buttons */}
-        <div className="hidden lg:flex items-center justify-center gap-3">
+        <div className="hidden lg:flex items-center justify-center gap-2 xl:gap-3">
           <Link href={"/brands"}>
-            <button className="text-nowrap border-2 border-[#212121] bg-[#E1D6EA] shadow-[6px_6px_0px_#000000] py-1.5 px-3 h-[40px] font-bowlby font-[400] text-sm xl:text-xl text-[#2C1D39] text-center cursor-pointer hover:shadow-[9px_9px_0px_#000000] hover:opacity-90 transition-all duration-200">
+            <button className="text-nowrap border-2 border-[#212121] bg-[#E1D6EA] shadow-[6px_6px_0px_#000000] py-1.5 px-2 xl:px-3 h-[40px] font-bowlby font-[400] text-xs lg:text-sm xl:text-xl text-[#2C1D39] text-center cursor-pointer hover:shadow-[9px_9px_0px_#000000] hover:opacity-90 transition-all duration-200">
               FOR BRANDS & CREATORS 🔥
             </button>
           </Link>

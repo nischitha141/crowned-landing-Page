@@ -98,7 +98,7 @@ const index = () => {
           </div>
         </div>
 
-        <div className="absolute top-[30%] -right-[3%] md:-right-[5%] rounded-xl shadow-md p-1 transform rotate-[20deg] bg-[#f1f1f1] scale-75 md:scale-100">
+        <div className="absolute top-[30%] -right-[3%] md:-right-[2.5%] rounded-xl shadow-md p-1 transform rotate-[20deg] bg-[#f1f1f1] scale-75 md:scale-100">
           <div className=" bg-white rounded-xl p-2">
             <div className="flex items-center justify-center flex-col ">
               <h3 className="text-[12px] font-extrabold font-jakarta text-[#424242] text-center">
