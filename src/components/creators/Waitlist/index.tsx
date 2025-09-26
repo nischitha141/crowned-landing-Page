@@ -39,7 +39,9 @@ const index = () => {
           JOIN THE WAITLIST
         </button>
       </div> */}
-      <EmailCTA targetPage="/creators/submit" buttonText="Get Early Access" />
+      <div className="w-full flex justify-center px-2 sm:px-4">
+        <EmailCTA targetPage="/creators/submit" buttonText="Get Early Access" />
+      </div>
       <Image
         className="absolute top-[8%] md:top-[12%] left-[5%] md:left-[10%] w-[20px] h-[20px] md:w-[30px] md:h-[30px]"
         src="/assets/star_1.svg"

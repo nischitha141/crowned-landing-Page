@@ -41,7 +41,9 @@ const index = () => {
               GET ME EARLY ACCESS 🔥
             </button> */}
 
-        <EmailCTA targetPage="/creators/submit" buttonText="Get Early Access" />
+        <div className="w-full flex justify-center px-2 sm:px-4">
+          <EmailCTA targetPage="/creators/submit" buttonText="Get Early Access" />
+        </div>
       </div>
 
       <div className="bg-[#111827] text-white font-sans text-sm sm:text-base rounded-full py-2 sm:py-3 px-4 sm:px-6 max-w-full text-center">

@@ -70,7 +70,7 @@ const index = () => {
 
         {/* Second row: Brands/Creators tabs centered */}
         <div className="flex justify-center">
-          <div className="rounded-[20px] border-2 border-black flex font-bowlby text-sm text-white">
+          <div className="rounded-[20px] border-2 border-black flex font-bowlby text-sm">
             <Link href="/brands">
               <button className="cursor-pointer text-white py-2 px-3 border-r-2 border-black bg-[#D9CCE5E0] rounded-l-[20px] hover:bg-[#C8B8D6] transition-all duration-200">
                 Brands
