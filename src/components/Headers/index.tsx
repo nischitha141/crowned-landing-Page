@@ -53,7 +53,7 @@ const Index = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-3 xl:gap-5 font-sans text-[#212121] text-base xl:text-lg font-[900]">
+        <div className="hidden lg:flex items-center gap-5 font-sans text-[#212121] text-base xl:text-lg font-[900]">
           <button
             onClick={() => handleNavigation("section-two")}
             className="nav-button cursor-pointer"
