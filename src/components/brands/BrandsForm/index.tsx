@@ -364,7 +364,7 @@ function BrandsFormContent() {
           {currentStep >= 4 && (
             <div className="flex flex-col w-full">
               <label className="text-[#424242] font-[600] font-sans text-sm md:text-[14px] mb-3">
-                Are you interested in cryptobased reward chains?*
+                Are you interested in cryptobased reward chains?&nbsp;*
               </label>
               <div className="flex flex-wrap flex-row items-start justify-start gap-2">
                 {cryptoOptions.map((option) => (
