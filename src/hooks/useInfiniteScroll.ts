@@ -8,9 +8,11 @@ export const useInfiniteScroll = (itemCount: number) => {
   const scrollLeft = () => {
     setIsAutoScrolling(false);
     if (scrollContainerRef.current) {
-      const cardWidth = 470;
-      const currentScroll = scrollContainerRef.current.scrollLeft;
-      scrollContainerRef.current.scrollTo({
+      const container = scrollContainerRef.current;
+      const firstCard = container.querySelector('div[class*="shrink-0"]') as HTMLElement;
+      const cardWidth = firstCard ? firstCard.offsetWidth + parseInt(getComputedStyle(container).gap || '16') : 470;
+      const currentScroll = container.scrollLeft;
+      container.scrollTo({
         left: currentScroll - cardWidth,
         behavior: "smooth",
       });
@@ -21,9 +23,11 @@ export const useInfiniteScroll = (itemCount: number) => {
   const scrollRight = () => {
     setIsAutoScrolling(false);
     if (scrollContainerRef.current) {
-      const cardWidth = 470;
-      const currentScroll = scrollContainerRef.current.scrollLeft;
-      scrollContainerRef.current.scrollTo({
+      const container = scrollContainerRef.current;
+      const firstCard = container.querySelector('div[class*="shrink-0"]') as HTMLElement;
+      const cardWidth = firstCard ? firstCard.offsetWidth + parseInt(getComputedStyle(container).gap || '16') : 470;
+      const currentScroll = container.scrollLeft;
+      container.scrollTo({
         left: currentScroll + cardWidth,
         behavior: "smooth",
       });
@@ -35,11 +39,13 @@ export const useInfiniteScroll = (itemCount: number) => {
     if (isAutoScrolling) {
       autoScrollInterval.current = setInterval(() => {
         if (scrollContainerRef.current) {
-          const cardWidth = 470;
-          const currentScroll = scrollContainerRef.current.scrollLeft;
-          
+          const container = scrollContainerRef.current;
+          const firstCard = container.querySelector('div[class*="shrink-0"]') as HTMLElement;
+          const cardWidth = firstCard ? firstCard.offsetWidth + parseInt(getComputedStyle(container).gap || '16') : 470;
+          const currentScroll = container.scrollLeft;
+
           if (currentScroll >= itemCount * cardWidth) {
-            scrollContainerRef.current.scrollTo({
+            container.scrollTo({
               left: 0,
               behavior: "auto",
             });
@@ -52,7 +58,7 @@ export const useInfiniteScroll = (itemCount: number) => {
               }
             }, 10);
           } else {
-            scrollContainerRef.current.scrollTo({
+            container.scrollTo({
               left: currentScroll + cardWidth,
               behavior: "smooth",
             });
