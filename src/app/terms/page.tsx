@@ -19,7 +19,7 @@ const Index = () => {
 
           <h2 className="text-3xl font-bold font-sans mt-6 mb-2">Clarification Regarding Age Rating and Content Policy:</h2>
           <p>We want to clarify that our app is available for <strong>all age groups</strong> and <strong>is not designed specifically for adults</strong>. It offers <strong>curated, predefined content</strong> created by the admin team, and users cannot post their own content. This ensures that <strong>inappropriate or mature content cannot be shared.</strong></p>
-          <br/><p>The app is intended to be suitable for users of all ages and will remain so <strong>unless changes are made to the Terms of Use.</strong> The current age rating reflects this, and we assure Apple that our content complies with the app&apos;s rating.</p>
+          <br/><p>The app is intended to be suitable for users of all ages and will remain so <strong>unless changes are made to the Terms of Use.</strong> The current age rating reflects this, and we assure you that our content complies with the app&apos;s rating.</p>
 
           <h2 className="text-3xl font-bold font-sans mt-6 mb-2">User Registration</h2>
           <p>If you are accepting the Terms on behalf of an organization or entity, rather than in an individual capacity, you represent and warrant that you are authorized to accept the Terms on that organization or entity’s behalf and bind them to these Terms (in which case, the references to “you” and “your” in these Terms, except for in this sentence, refer to that organization or entity).</p>
