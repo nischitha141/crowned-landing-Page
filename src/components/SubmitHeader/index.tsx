@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import Link from "next/link";
+import { APP_LINKS } from "@/constants/links";
 
 interface SubmitHeaderProps {
   backgroundColor?: string;
@@ -68,7 +69,7 @@ const SubmitHeader: React.FC<SubmitHeaderProps> = ({ backgroundColor = "#FFFAF1"
         <div className="hidden lg:flex items-center justify-center">
           <div className="p-2 border-[2px] border-[#212121] h-[40px] shadow-[6px_6px_0px_#000000] bg-gradient-to-t from-[#583A73] to-[#8459AB] z-10 flex items-center justify-center gap-2 hover:shadow-[9px_9px_0px_#000000] hover:opacity-90 transition-all duration-200">
             <Link
-              href={"https://apps.apple.com/app/crowned/id6476963717"}
+              href={APP_LINKS.APPLE_STORE}
               target="_blank"
               rel="noopener noreferrer"
               className="cursor-pointer"
@@ -82,7 +83,7 @@ const SubmitHeader: React.FC<SubmitHeaderProps> = ({ backgroundColor = "#FFFAF1"
             </Link>
             <div className="w-[2px] h-full bg-white"></div>
             <Link
-              href={"https://play.google.com/store/apps/details?id=com.crowned.app"}
+              href={APP_LINKS.GOOGLE_PLAY}
               target="_blank"
               rel="noopener noreferrer"
               className="cursor-pointer"
@@ -172,7 +173,7 @@ const SubmitHeader: React.FC<SubmitHeaderProps> = ({ backgroundColor = "#FFFAF1"
             <div className="pt-4 border-t border-[#FDE6D4] w-full">
               <div className="w-full p-3 border-[2px] border-[#212121] shadow-[4px_4px_0px_#000000] bg-gradient-to-t from-[#583A73] to-[#8459AB] flex items-center justify-center gap-4 hover:shadow-[6px_6px_0px_#000000] transition-all">
                 <Link
-                  href={"https://apps.apple.com/app/crowned/id6476963717"}
+                  href={APP_LINKS.APPLE_STORE}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="cursor-pointer"
@@ -186,7 +187,7 @@ const SubmitHeader: React.FC<SubmitHeaderProps> = ({ backgroundColor = "#FFFAF1"
                 </Link>
                 <div className="w-[1px] h-6 bg-white"></div>
                 <Link
-                  href={"https://play.google.com/store/apps/details?id=com.crowned.app"}
+                  href={APP_LINKS.GOOGLE_PLAY}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="cursor-pointer"
